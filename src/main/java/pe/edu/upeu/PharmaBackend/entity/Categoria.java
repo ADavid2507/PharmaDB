@@ -1,4 +1,4 @@
-package pe.edu.upeu.PharmaBackend.model;
+package pe.edu.upeu.PharmaBackend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

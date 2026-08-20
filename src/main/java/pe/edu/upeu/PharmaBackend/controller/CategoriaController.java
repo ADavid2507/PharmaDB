@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pe.edu.upeu.PharmaBackend.dto.CategoriaRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.CategoriaResponseDTO;
 import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
-import pe.edu.upeu.PharmaBackend.model.Categoria;
 import pe.edu.upeu.PharmaBackend.service.service.CategoriaService;
 
 @RestController
