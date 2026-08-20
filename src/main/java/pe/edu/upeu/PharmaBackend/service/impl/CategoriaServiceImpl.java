@@ -9,7 +9,7 @@ import pe.edu.upeu.PharmaBackend.dto.CategoriaResponseDTO;
 import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.exception.ReglaNegocioException;
 import pe.edu.upeu.PharmaBackend.entity.Categoria;
-import pe.edu.upeu.PharmaBackend.repository.CatergoriaRepository;
+import pe.edu.upeu.PharmaBackend.repository.CategoriaRepository;
 import pe.edu.upeu.PharmaBackend.service.service.CategoriaService;
 
 import java.util.List;
@@ -19,10 +19,10 @@ import java.util.Optional;
 public class CategoriaServiceImpl implements CategoriaService {
     private static final Logger LOG = LoggerFactory.getLogger(CategoriaServiceImpl.class);
 
-    private final CatergoriaRepository catergoriaRepository;
+    private final CategoriaRepository categoriaRepository;
 
-    public CategoriaServiceImpl(CatergoriaRepository catergoriaRepository) {
-        this.catergoriaRepository = catergoriaRepository;
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
     }
 
 
@@ -30,7 +30,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Transactional
     public CategoriaResponseDTO create(CategoriaRequestDTO request) {
         String nombre = request.getNombre().trim();
-        if(catergoriaRepository.existsByNombreIgnoreCase(nombre)){
+        if(categoriaRepository.existsByNombreIgnoreCase(nombre)){
             throw new ReglaNegocioException("Ya existe una categoría con el nombre: " + nombre);
         }
         Categoria categoria = new Categoria();
@@ -38,7 +38,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         categoria.setDescripcion(request.getDescripcion());
         categoria.setEstado(request.getEstado());
 
-        Categoria catCreate = catergoriaRepository.save(categoria);
+        Categoria catCreate = categoriaRepository.save(categoria);
 
         return convertirResponse(catCreate);
     }
@@ -46,20 +46,20 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     @Transactional
     public CategoriaResponseDTO update(Long id, CategoriaRequestDTO request) {
-        Categoria categoria = catergoriaRepository.findById(id).orElseThrow(()->
+        Categoria categoria = categoriaRepository.findById(id).orElseThrow(()->
                 new RecursosNoEncontradosException(
                         "Categoría con id " + id + " no encontrada"
                 )
         );
         String nombre = request.getNombre().trim();
-        if (catergoriaRepository.existsByNombreIgnoreCaseAndIdNot(nombre, id)) {
+        if (categoriaRepository.existsByNombreIgnoreCaseAndIdNot(nombre, id)) {
             throw new ReglaNegocioException("Ya existe una categoría con el nombre: " + nombre);
         }
         categoria.setNombre(nombre);
         categoria.setDescripcion(request.getDescripcion());
         categoria.setEstado(request.getEstado());
 
-        Categoria catUpdate = catergoriaRepository.save(categoria);
+        Categoria catUpdate = categoriaRepository.save(categoria);
 
         return convertirResponse(catUpdate);
     }
@@ -67,24 +67,24 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Override
     @Transactional(readOnly = true)
     public Optional<CategoriaResponseDTO> read(Long id) {
-        return catergoriaRepository.findById(id).map(this::convertirResponse);
+        return categoriaRepository.findById(id).map(this::convertirResponse);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<CategoriaResponseDTO> readAll() {
-        return catergoriaRepository.findAll().stream().map(this::convertirResponse).toList();
+        return categoriaRepository.findAll().stream().map(this::convertirResponse).toList();
     }
 
     @Override
     @Transactional
     public void delete(Long id) {
-        Categoria categoria = catergoriaRepository.findById(id).orElseThrow(()->
+        Categoria categoria = categoriaRepository.findById(id).orElseThrow(()->
                 new RecursosNoEncontradosException(
                         "Categoría con id " + id + " no encontrada"
                 )
         );
-        catergoriaRepository.delete(categoria);
+        categoriaRepository.delete(categoria);
     }
 
     private CategoriaResponseDTO convertirResponse(Categoria categoria) {
