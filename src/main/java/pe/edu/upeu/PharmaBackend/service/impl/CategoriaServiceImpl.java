@@ -52,7 +52,7 @@ public class CategoriaServiceImpl implements CategoriaService {
                 )
         );
         String nombre = request.getNombre().trim();
-        if (categoriaRepository.existsByNombreIgnoreCaseAndIdNot(nombre, id)) {
+        if (categoriaRepository.existsByNombreIgnoreCaseAndIdCategoriaNot(nombre, id)) {
             throw new ReglaNegocioException("Ya existe una categoría con el nombre: " + nombre);
         }
         categoria.setNombre(nombre);
@@ -89,7 +89,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     private CategoriaResponseDTO convertirResponse(Categoria categoria) {
         return new CategoriaResponseDTO(
-                categoria.getId(),
+                categoria.getIdCategoria(),
                 categoria.getNombre(),
                 categoria.getDescripcion(),
                 categoria.getEstado(),

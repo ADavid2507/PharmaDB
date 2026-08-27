@@ -3,29 +3,37 @@ package pe.edu.upeu.PharmaBackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Entity
-@Table(name = "categorias")
+@Table(name = "productos")
 @Getter
 @Setter
-public class Categoria {
+public class Producto {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long idCategoria;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_producto")
+    private Long idProducto;
 
     @Column(nullable = false, length = 50)
     private String nombre;
 
-    @Column(length = 200)
-    private String  descripcion;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal precio;
 
     @Column(nullable = false)
     private Boolean estado;
+
+    @Column(nullable = false)
+    private Integer stock;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
 
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     private LocalDateTime fechaCreacion;
