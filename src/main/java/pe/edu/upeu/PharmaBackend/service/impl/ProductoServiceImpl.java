@@ -1,14 +1,16 @@
 package pe.edu.upeu.PharmaBackend.service.impl;
 
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import pe.edu.upeu.PharmaBackend.dto.ProductoRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.ProductoResponseDTO;
 import pe.edu.upeu.PharmaBackend.entity.Categoria;
 import pe.edu.upeu.PharmaBackend.entity.Producto;
 import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.exception.ReglaNegocioException;
+import pe.edu.upeu.PharmaBackend.mapper.ProductoMapper;
 import pe.edu.upeu.PharmaBackend.repository.CategoriaRepository;
 import pe.edu.upeu.PharmaBackend.repository.ProductoRepository;
 import pe.edu.upeu.PharmaBackend.service.service.ProductoService;
@@ -16,21 +18,21 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
-    private static final Logger LOG = Logger.getLogger(ProductoServiceImpl.class.getName());
+    private static final Logger LOG = LoggerFactory.getLogger(ProductoServiceImpl.class);
 
     private final ProductoRepository productoRepository;
     private final CategoriaRepository categoriaRepository;
+    private final ProductoMapper productoMapper;
 
 
-    public ProductoServiceImpl(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, RequestMappingHandlerAdapter requestMappingHandlerAdapter) {
+    public ProductoServiceImpl(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ProductoMapper productoMapper) {
         this.productoRepository = productoRepository;
         this.categoriaRepository = categoriaRepository;
-
+        this.productoMapper = productoMapper;
     }
 
     @Transactional
@@ -40,20 +42,16 @@ public class ProductoServiceImpl implements ProductoService {
         if(productoRepository.existsByNombreIgnoreCase(nombre)){
             throw new ReglaNegocioException("Ya existe un producto con el nombre: " + nombre);
         }
-        Categoria categoria = categoriaRepository.findById(request.getIdCategoria()).orElseThrow(()-> new RecursosNoEncontradosException(
-                "Categoria con id " + request.getIdCategoria() + " no encontrada"
+        Categoria categoria = categoriaRepository.findById(request.getCategoriaId()).orElseThrow(()-> new RecursosNoEncontradosException(
+                "Categoria con id " + request.getCategoriaId() + " no encontrada"
         ));
 
 
-        Producto producto = new Producto();
-        producto.setNombre(nombre);
-        producto.setPrecio(request.getPrecio());
-        producto.setStock(request.getStock());
-        producto.setCategoria(categoria);
+        Producto producto = productoMapper.toEntity(request, categoria);
+        Producto productoCreado = productoRepository.save(producto);
 
-        Producto productoCreate = productoRepository.save(producto);
 
-        return convertirResponse(productoCreate);
+        return productoMapper.toResponse(productoCreado);
 
     }
 
@@ -61,35 +59,32 @@ public class ProductoServiceImpl implements ProductoService {
     @Transactional
     public ProductoResponseDTO update(Long aLong, ProductoRequestDTO request) {;
         String nombre = request.getNombre().trim();
-        if(productoRepository.existsByNombreIgnoreCase(nombre)){
+        if(productoRepository.existsByNombreIgnoreCaseAndIdProductoNot(nombre, aLong)){
             throw new ReglaNegocioException("Ya existe un producto con el nombre: " + nombre);
         }
-        Categoria categoria = categoriaRepository.findById(request.getIdCategoria()).orElseThrow(()-> new RecursosNoEncontradosException(
-                "Categoria con id " + request.getIdCategoria() + " no encontrada"
+        Categoria categoria = categoriaRepository.findById(request.getCategoriaId()).orElseThrow(()-> new RecursosNoEncontradosException(
+                "Categoria con id " + request.getCategoriaId() + " no encontrada"
         ));
         Producto producto = productoRepository.findById(aLong).orElseThrow(()-> new RecursosNoEncontradosException(
                 "Producto con id " + aLong + " no encontrado"
         ));
-        producto.setNombre(nombre);
-        producto.setPrecio(request.getPrecio());
-        producto.setStock(request.getStock());
-        producto.setCategoria(categoria);
+        productoMapper.actualizarEntitidad(producto, request, categoria);
 
         Producto productoUpdate = productoRepository.save(producto);
-        return convertirResponse(productoUpdate);
+        return productoMapper.toResponse(productoUpdate);
     }
 
     @Override
     @Transactional(readOnly = true)
     public Optional<ProductoResponseDTO> read(Long aLong) {
-        return productoRepository.findById(aLong).map(this::convertirResponse);
+        return productoRepository.findById(aLong).map(productoMapper::toResponse);
 
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<ProductoResponseDTO> readAll() {
-        return productoRepository.findAll().stream().map(this::convertirResponse).toList();
+        return productoRepository.findAll().stream().map(productoMapper::toResponse).toList();
     }
 
     @Override
@@ -100,19 +95,5 @@ public class ProductoServiceImpl implements ProductoService {
         ));
         productoRepository.delete(producto);
 
-    }
-
-    private ProductoResponseDTO convertirResponse(Producto producto) {
-        return new ProductoResponseDTO(
-                producto.getIdProducto(),
-                producto.getNombre(),
-                producto.getPrecio(),
-                producto.getStock(),
-                producto.getCategoria().getIdCategoria(),
-                producto.getCategoria().getNombre(),
-                producto.getEstado(),
-                producto.getFechaCreacion(),
-                producto.getFechaModificacion()
-        );
     }
 }

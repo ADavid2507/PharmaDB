@@ -1,9 +1,6 @@
 package pe.edu.upeu.PharmaBackend.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +29,7 @@ public class ProductoRequestDTO {
     @PositiveOrZero(message = "El stock debe ser mayor o igual a 0")
     private Integer stock;
 
-    @NotNull
-    private Long idCategoria;
+    @NotNull(message = "La categoria es obligatoria")
+    @Positive(message = "El id de la categoria debe ser mayor a 0")
+    private Long categoriaId;
 }
