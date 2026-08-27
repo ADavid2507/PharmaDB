@@ -17,34 +17,25 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleNotFound(RecursosNoEncontradosException exception) {
         return buildResponse(HttpStatus.NOT_FOUND, exception.getMessage(), null);
     }
-
     @ExceptionHandler(ReglaNegocioException.class)
     public ResponseEntity<ErrorResponse> handleBusinessRule(ReglaNegocioException exception) {
         return buildResponse(HttpStatus.CONFLICT, exception.getMessage(), null);
     }
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException exception) {
         Map<String, String> validationErrors = new LinkedHashMap<>();
         exception.getBindingResult().getFieldErrors().forEach(error ->
                 validationErrors.putIfAbsent(error.getField(), error.getDefaultMessage())
         );
-        return buildResponse(
-                HttpStatus.BAD_REQUEST,
-                "Los datos enviados no son válidos",
-                validationErrors
+        return buildResponse(HttpStatus.BAD_REQUEST,
+                "Los datos enviados no son válidos", validationErrors
         );
     }
-
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleUnexpectedError(Exception exception) {
         return buildResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR,
-                "Ocurrió un error inesperado",
-                null
-        );
+                HttpStatus.INTERNAL_SERVER_ERROR, "Ocurrió un error inesperado", null);
     }
-
     private ResponseEntity<ErrorResponse> buildResponse(
             HttpStatus status, String message, Map<String, String> validationErrors) {
         ErrorResponse body = new ErrorResponse(
@@ -56,7 +47,6 @@ public class GlobalExceptionHandler {
         );
         return ResponseEntity.status(status).body(body);
     }
-
     public record ErrorResponse(
             LocalDateTime timestamp,
             int status,
