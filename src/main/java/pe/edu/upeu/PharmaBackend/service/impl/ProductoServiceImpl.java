@@ -39,6 +39,9 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     public ProductoResponseDTO create(ProductoRequestDTO request) {
         String nombre = request.getNombre().trim();
+
+        LOG.info("Creando producto con nombre: {}, CategoriaId: {}", nombre, request.getCategoriaId());
+
         if(productoRepository.existsByNombreIgnoreCase(nombre)){
             throw new ReglaNegocioException("Ya existe un producto con el nombre: " + nombre);
         }
@@ -50,6 +53,8 @@ public class ProductoServiceImpl implements ProductoService {
         Producto producto = productoMapper.toEntity(request, categoria);
         Producto productoCreado = productoRepository.save(producto);
 
+        LOG.info("Producto creado con id: {}, CategoriaID: {}", productoCreado.getIdProducto(), categoria.getIdCategoria());
+
 
         return productoMapper.toResponse(productoCreado);
 
@@ -59,6 +64,9 @@ public class ProductoServiceImpl implements ProductoService {
     @Transactional
     public ProductoResponseDTO update(Long aLong, ProductoRequestDTO request) {;
         String nombre = request.getNombre().trim();
+
+        LOG.info("Actualizando producto con id: {}, Nombre: {}", aLong, nombre);
+
         if(productoRepository.existsByNombreIgnoreCaseAndIdProductoNot(nombre, aLong)){
             throw new ReglaNegocioException("Ya existe un producto con el nombre: " + nombre);
         }
@@ -68,9 +76,13 @@ public class ProductoServiceImpl implements ProductoService {
         Producto producto = productoRepository.findById(aLong).orElseThrow(()-> new RecursosNoEncontradosException(
                 "Producto con id " + aLong + " no encontrado"
         ));
-        productoMapper.actualizarEntitidad(producto, request, categoria);
+        productoMapper.actualizarEntidad(producto, request, categoria);
 
         Producto productoUpdate = productoRepository.save(producto);
+
+        LOG.info("Producto actualizado con id: {}, Nombre: {}", productoUpdate.getIdProducto(), productoUpdate.getNombre());
+
+
         return productoMapper.toResponse(productoUpdate);
     }
 
@@ -90,9 +102,11 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     @Transactional
     public void delete(Long aLong) {
+        LOG.info("Eliminando producto con id: {}", aLong);
         Producto producto = productoRepository.findById(aLong).orElseThrow(()-> new RecursosNoEncontradosException(
                 "Producto con id " + aLong + " no encontrado"
         ));
+        LOG.info("Producto eliminado con id: {}", producto.getIdProducto());
         productoRepository.delete(producto);
 
     }

@@ -12,12 +12,12 @@ public class ProductoMapper {
 
     public Producto toEntity(ProductoRequestDTO request, Categoria categoria) {
         Producto producto = new Producto();
-        actualizarEntitidad(producto, request, categoria);
+        actualizarEntidad(producto, request, categoria);
         return producto;
     }
 
-    public void actualizarEntitidad(Producto producto, ProductoRequestDTO request, Categoria categoria) {
-        producto.setNombre(request.getNombre());
+    public void actualizarEntidad(Producto producto, ProductoRequestDTO request, Categoria categoria) {
+        producto.setNombre(request.getNombre().trim());
         producto.setPrecio(request.getPrecio());
         producto.setStock(request.getStock());
         producto.setCategoria(categoria);
