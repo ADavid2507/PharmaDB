@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upeu.PharmaBackend.dto.ProductoRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.ProductoResponseDTO;
-import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.service.service.ProductoService;
 
 @RestController
@@ -26,9 +25,7 @@ public class ProductoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductoResponseDTO> findById(@PathVariable Long id){
-        ProductoResponseDTO producto = productoService.read(id).orElseThrow(() ->
-                new RecursosNoEncontradosException("Producto con id " + id + " no encontrado")
-        );
+        ProductoResponseDTO producto = productoService.read(id);
         return ResponseEntity.ok(producto);
     }
 

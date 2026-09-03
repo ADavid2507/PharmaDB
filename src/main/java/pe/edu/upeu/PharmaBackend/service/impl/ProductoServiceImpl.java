@@ -17,7 +17,6 @@ import pe.edu.upeu.PharmaBackend.service.service.ProductoService;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -88,8 +87,12 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<ProductoResponseDTO> read(Long aLong) {
-        return productoRepository.findById(aLong).map(productoMapper::toResponse);
+    public ProductoResponseDTO read(Long aLong) {
+        Producto producto = productoRepository.findById(aLong)
+                .orElseThrow(() -> new RecursosNoEncontradosException(
+                        "Producto con id " + aLong + " no encontrado"
+                ));
+        return productoMapper.toResponse(producto);
 
     }
 

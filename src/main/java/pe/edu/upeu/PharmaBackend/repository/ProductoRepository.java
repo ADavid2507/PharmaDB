@@ -3,9 +3,14 @@ package pe.edu.upeu.PharmaBackend.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import pe.edu.upeu.PharmaBackend.entity.Producto;
 
+import java.util.List;
+
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
     boolean existsByNombreIgnoreCase(String nombre);
+    boolean existsByNombreIgnoreCaseAndIdProductoNot(String nombre, long id);
 
-    boolean existsByNombreIgnoreCaseAndIdProductoNot(String nombre, Long idProducto);
+    List<Producto> findByCategoriaIdCategoria(Long categoriaId);
+    boolean existsByCategoriaIdCategoria(Long categoriaId);
+
 
 }

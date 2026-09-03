@@ -13,7 +13,7 @@ import pe.edu.upeu.PharmaBackend.repository.CategoriaRepository;
 import pe.edu.upeu.PharmaBackend.service.service.CategoriaService;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
@@ -66,8 +66,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<CategoriaResponseDTO> read(Long id) {
-        return categoriaRepository.findById(id).map(this::convertirResponse);
+    public CategoriaResponseDTO read(Long id) {
+        Categoria categoria = categoriaRepository.findById(id)
+                .orElseThrow(() -> new RecursosNoEncontradosException(
+                        "Categoría con id " + id + " no encontrada"
+                ));
+        return convertirResponse(categoria);
     }
 
     @Override

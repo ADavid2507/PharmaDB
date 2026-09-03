@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upeu.PharmaBackend.dto.CategoriaRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.CategoriaResponseDTO;
-import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.service.service.CategoriaService;
 
 @RestController
@@ -25,9 +24,7 @@ public class CategoriaController {
 
     @GetMapping("/{id}")
     public ResponseEntity<CategoriaResponseDTO> findById(@PathVariable Long id) {
-        CategoriaResponseDTO categoria = categoriaService.read(id).orElseThrow(() ->
-                new RecursosNoEncontradosException("Categoría con id " + id + " no encontrada")
-        );
+        CategoriaResponseDTO categoria = categoriaService.read(id);
         return ResponseEntity.ok(categoria);
     }
 
