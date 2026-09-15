@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import pe.edu.upeu.PharmaBackend.exception.dto.ErrorResponseDTO;
 
@@ -15,6 +16,19 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorResponseDTO> handleInvalidParameter(
+            MethodArgumentTypeMismatchException ex, HttpServletRequest request) {
+        String message = "El parámetro '" + ex.getName() + "' tiene un formato inválido";
+        if (java.time.LocalDate.class.equals(ex.getRequiredType())) {
+            message += ". Use una fecha ISO yyyy-MM-dd";
+        }
+        ErrorResponseDTO error = new ErrorResponseDTO(
+                LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), "Bad Request",
+                message, request.getRequestURI(), Map.of(ex.getName(), message));
+        return ResponseEntity.badRequest().body(error);
+    }
 
     /*
      * Recurso no encontrado
