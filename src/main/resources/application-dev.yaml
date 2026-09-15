@@ -21,3 +21,12 @@ springdoc:
   api-docs:
     enabled: true
 
+logging:
+  level:
+    pe.edu.upeu.PharmaBackend: DEBUG
+    org.hibernate.orm.jdbc.bind: OFF
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}
+

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<title>Verificación CORS de PharmaBackend</title>
+<style>body{font:18px system-ui;margin:40px;max-width:1050px}button{padding:12px;font-size:18px}pre{white-space:pre-wrap;background:#f1f4f6;padding:20px}h1{font-size:28px}</style>
+<h1>Verificación CORS de PharmaBackend</h1>
+<p id="origen"></p>
+<p>GET http://localhost:9090/api/v1/reportes/ventas-por-categoria?desde=2026-09-01&amp;hasta=2026-09-11</p>
+<button id="probar">Consultar reporte</button>
+<pre id="salida">Sin ejecutar</pre>
+<script>
+const api = new URLSearchParams(location.search).get('api') || 'http://localhost:9090';
+const endpoint = api+'/api/v1/reportes/ventas-por-categoria?desde=2026-09-01&hasta=2026-09-11';
+document.querySelector('#origen').textContent='Origen: '+location.origin;
+document.querySelectorAll('p')[1].textContent='GET '+endpoint;
+document.querySelector('#probar').onclick=async()=>{
+ try{
+  const r=await fetch(endpoint);
+  const body=await r.text();
+  document.querySelector('#salida').textContent='HTTP '+r.status+'\n'+body;
+  console.log('Origen:',location.origin,'HTTP:',r.status,'Respuesta:',body);
+ }catch(e){document.querySelector('#salida').textContent='El navegador no pudo leer la respuesta: '+e;console.error(e);}
+};
+</script>
+</html>

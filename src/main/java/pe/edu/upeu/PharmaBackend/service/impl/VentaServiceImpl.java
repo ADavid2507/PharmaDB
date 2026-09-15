@@ -147,7 +147,10 @@ public class VentaServiceImpl implements VentaService {
 
         List<VentaResponseDTO> ventas = ventaRepository.buscar(clienteId, estado, desdeHora, hastaHora, sort).stream().map(this::convertirResponse).toList();
 
-        LOG.info("Fin buscar ventas | tiempo={}ms", System.currentTimeMillis() - inicio);
+        LOG.info("Fin buscar ventas | clienteId={} | estado={} | desde={} | hasta={} | "
+                        + "ordenarPor={} | direccion={} | filas={} | duracionMs={}",
+                clienteId, estado, desde, hasta, ordenarPor, direccion,
+                ventas.size(), System.currentTimeMillis() - inicio);
 
         return ventas;
     }
@@ -204,7 +207,7 @@ public class VentaServiceImpl implements VentaService {
     }
 
 
-    private static final String ORDEN_POR_DEFECTO = "ordenPorDefecto";
+    private static final String ORDEN_POR_DEFECTO = "id";
     private static final List<String> CAMPOS_ORDENABLES = List.of(
             "id",
             "fechaRegistro",

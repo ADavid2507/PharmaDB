@@ -21,3 +21,13 @@ springdoc:
     path: false
   api-docs:
     enabled: false
+
+logging:
+  level:
+    pe.edu.upeu.PharmaBackend: INFO
+    org.hibernate.SQL: WARN
+    org.hibernate.orm.jdbc.bind: OFF
+
+app:
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:}

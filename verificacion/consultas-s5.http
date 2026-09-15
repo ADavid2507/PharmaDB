@@ -1,0 +1,71 @@
+### P01 Cliente individual
+GET http://localhost:9090/api/v1/ventas/buscar?idCliente=1&ordenarPor=id
+Accept: application/json
+
+### P02 Estado individual
+GET http://localhost:9090/api/v1/ventas/buscar?estadoVenta=ANULADA&ordenarPor=id
+Accept: application/json
+
+### P03 Fecha inicial individual
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-01&ordenarPor=id
+Accept: application/json
+
+### P04 Fecha final individual
+GET http://localhost:9090/api/v1/ventas/buscar?hasta=2026-08-31&ordenarPor=id
+Accept: application/json
+
+### P05 Rango de fechas
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-01&hasta=2026-09-11&ordenarPor=id
+Accept: application/json
+
+### P06 Combinación cliente y estado
+GET http://localhost:9090/api/v1/ventas/buscar?idCliente=1&estadoVenta=REGISTRADA&ordenarPor=id
+Accept: application/json
+
+### P07 Combinación completa
+GET http://localhost:9090/api/v1/ventas/buscar?idCliente=1&estadoVenta=REGISTRADA&desde=2026-09-01&hasta=2026-09-11&ordenarPor=total&direccion=asc
+Accept: application/json
+
+### P08 Total ascendente
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-01&hasta=2026-09-11&ordenarPor=total&direccion=asc
+Accept: application/json
+
+### P09 Total descendente
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-01&hasta=2026-09-11&ordenarPor=total&direccion=desc
+Accept: application/json
+
+### P10 Fecha ascendente
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-01&hasta=2026-09-11&ordenarPor=fechaRegistro&direccion=asc
+Accept: application/json
+
+### P11 Fecha descendente
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-01&hasta=2026-09-11&ordenarPor=fechaRegistro&direccion=desc
+Accept: application/json
+
+### P12 Sin resultados
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-06-01&hasta=2026-06-11&ordenarPor=id
+Accept: application/json
+
+### P13 Campo inválido
+GET http://localhost:9090/api/v1/ventas/buscar?ordenarPor=cliente.dni
+Accept: application/json
+
+### P14 Fecha mal formada
+GET http://localhost:9090/api/v1/ventas/buscar?desde=01-09-2026&ordenarPor=id
+Accept: application/json
+
+### P15 Reporte por categoría
+GET http://localhost:9090/api/v1/reportes/ventas-por-categoria?desde=2026-09-01&hasta=2026-09-11
+Accept: application/json
+
+### P16 Reporte por producto
+GET http://localhost:9090/api/v1/reportes/productos-mas-vendidos?desde=2026-09-01&hasta=2026-09-11
+Accept: application/json
+
+### P17 Orden por defecto
+GET http://localhost:9090/api/v1/ventas/buscar?idCliente=1
+Accept: application/json
+
+### P18 Rango invertido
+GET http://localhost:9090/api/v1/ventas/buscar?desde=2026-09-11&hasta=2026-09-01&ordenarPor=id
+Accept: application/json
