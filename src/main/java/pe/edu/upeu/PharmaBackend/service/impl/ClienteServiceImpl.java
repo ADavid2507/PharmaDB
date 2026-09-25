@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.PharmaBackend.dto.ClienteRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.ClienteResponseDTO;
 import pe.edu.upeu.PharmaBackend.entity.Cliente;
+import pe.edu.upeu.PharmaBackend.mapper.ClienteMapper;
 import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.exception.ReglaNegocioException;
 import pe.edu.upeu.PharmaBackend.repository.ClienteRepository;
@@ -22,10 +23,12 @@ public class ClienteServiceImpl
             LoggerFactory.getLogger(ClienteServiceImpl.class);
 
     private final ClienteRepository clienteRepository;
+    private final ClienteMapper clienteMapper;
 
     public ClienteServiceImpl(
-            ClienteRepository clienteRepository) {
+            ClienteRepository clienteRepository, ClienteMapper clienteMapper) {
         this.clienteRepository = clienteRepository;
+        this.clienteMapper = clienteMapper;
     }
 
     @Override
@@ -57,23 +60,7 @@ public class ClienteServiceImpl
             );
         }
 
-        Cliente cliente = new Cliente();
-
-        cliente.setDni(dni);
-        cliente.setNombres(
-                request.getNombres().trim()
-        );
-        cliente.setApellidos(
-                request.getApellidos().trim()
-        );
-        cliente.setEmail(email);
-        cliente.setTelefono(
-                normalizar(request.getTelefono())
-        );
-        cliente.setDireccion(
-                normalizar(request.getDireccion())
-        );
-        cliente.setEstado(request.getEstado());
+        Cliente cliente = clienteMapper.toEntity(request);
 
         Cliente guardado =
                 clienteRepository.save(cliente);
@@ -83,7 +70,7 @@ public class ClienteServiceImpl
                 guardado.getId()
         );
 
-        return convertirResponse(guardado);
+        return clienteMapper.toResponse(guardado);
     }
 
     @Override
@@ -95,7 +82,7 @@ public class ClienteServiceImpl
         Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new RecursosNoEncontradosException(
                         "Cliente no encontrado con id: " + id));
-        return convertirResponse(cliente);
+        return clienteMapper.toResponse(cliente);
     }
 
     @Override
@@ -106,7 +93,7 @@ public class ClienteServiceImpl
 
         return clienteRepository.findAll()
                 .stream()
-                .map(this::convertirResponse)
+                .map(clienteMapper::toResponse)
                 .toList();
     }
 
@@ -151,21 +138,7 @@ public class ClienteServiceImpl
             );
         }
 
-        cliente.setDni(dni);
-        cliente.setNombres(
-                request.getNombres().trim()
-        );
-        cliente.setApellidos(
-                request.getApellidos().trim()
-        );
-        cliente.setEmail(email);
-        cliente.setTelefono(
-                normalizar(request.getTelefono())
-        );
-        cliente.setDireccion(
-                normalizar(request.getDireccion())
-        );
-        cliente.setEstado(request.getEstado());
+        clienteMapper.actualizarEntidad(cliente, request);
 
         Cliente actualizado =
                 clienteRepository.save(cliente);
@@ -175,7 +148,7 @@ public class ClienteServiceImpl
                 id
         );
 
-        return convertirResponse(actualizado);
+        return clienteMapper.toResponse(actualizado);
     }
 
     @Override
@@ -198,29 +171,4 @@ public class ClienteServiceImpl
         );
     }
 
-    private ClienteResponseDTO convertirResponse(
-            Cliente cliente) {
-
-        return new ClienteResponseDTO(
-                cliente.getId(),
-                cliente.getDni(),
-                cliente.getNombres(),
-                cliente.getApellidos(),
-                cliente.getEmail(),
-                cliente.getTelefono(),
-                cliente.getDireccion(),
-                cliente.getEstado(),
-                cliente.getFechaCreacion(),
-                cliente.getFechaModificacion()
-        );
-    }
-
-    private String normalizar(String valor) {
-
-        if (valor == null || valor.isBlank()) {
-            return null;
-        }
-
-        return valor.trim();
-    }
 }

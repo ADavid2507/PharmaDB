@@ -22,7 +22,4 @@ public interface VentaService{
             String ordenarPor,
             String direccion);
 
-    List<VentaResponseDTO> reporteVentasPorCategoria(LocalDateTime desde, LocalDateTime hasta);
-
-    List<VentaResponseDTO> reporteProductosMasVendidos(LocalDateTime desde, LocalDateTime hasta);
 }
