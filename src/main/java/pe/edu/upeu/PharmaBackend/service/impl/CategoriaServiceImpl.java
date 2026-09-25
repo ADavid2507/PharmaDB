@@ -9,6 +9,7 @@ import pe.edu.upeu.PharmaBackend.dto.CategoriaResponseDTO;
 import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.exception.ReglaNegocioException;
 import pe.edu.upeu.PharmaBackend.entity.Categoria;
+import pe.edu.upeu.PharmaBackend.mapper.CategoriaMapper;
 import pe.edu.upeu.PharmaBackend.repository.CategoriaRepository;
 import pe.edu.upeu.PharmaBackend.service.service.CategoriaService;
 
@@ -20,9 +21,11 @@ public class CategoriaServiceImpl implements CategoriaService {
     private static final Logger LOG = LoggerFactory.getLogger(CategoriaServiceImpl.class);
 
     private final CategoriaRepository categoriaRepository;
+    private final CategoriaMapper categoriaMapper;
 
-    public CategoriaServiceImpl(CategoriaRepository categoriaRepository) {
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper) {
         this.categoriaRepository = categoriaRepository;
+        this.categoriaMapper = categoriaMapper;
     }
 
 
@@ -33,14 +36,11 @@ public class CategoriaServiceImpl implements CategoriaService {
         if(categoriaRepository.existsByNombreIgnoreCase(nombre)){
             throw new ReglaNegocioException("Ya existe una categoría con el nombre: " + nombre);
         }
-        Categoria categoria = new Categoria();
-        categoria.setNombre(nombre);
-        categoria.setDescripcion(request.getDescripcion());
-        categoria.setEstado(request.getEstado());
+        Categoria categoria = categoriaMapper.toEntity(request);
 
         Categoria catCreate = categoriaRepository.save(categoria);
 
-        return convertirResponse(catCreate);
+        return categoriaMapper.toResponse(catCreate);
     }
 
     @Override
@@ -55,13 +55,11 @@ public class CategoriaServiceImpl implements CategoriaService {
         if (categoriaRepository.existsByNombreIgnoreCaseAndIdCategoriaNot(nombre, id)) {
             throw new ReglaNegocioException("Ya existe una categoría con el nombre: " + nombre);
         }
-        categoria.setNombre(nombre);
-        categoria.setDescripcion(request.getDescripcion());
-        categoria.setEstado(request.getEstado());
+        categoriaMapper.actualizarEntidad(categoria, request);
 
         Categoria catUpdate = categoriaRepository.save(categoria);
 
-        return convertirResponse(catUpdate);
+        return categoriaMapper.toResponse(catUpdate);
     }
 
     @Override
@@ -71,13 +69,13 @@ public class CategoriaServiceImpl implements CategoriaService {
                 .orElseThrow(() -> new RecursosNoEncontradosException(
                         "Categoría con id " + id + " no encontrada"
                 ));
-        return convertirResponse(categoria);
+        return categoriaMapper.toResponse(categoria);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<CategoriaResponseDTO> readAll() {
-        return categoriaRepository.findAll().stream().map(this::convertirResponse).toList();
+        return categoriaRepository.findAll().stream().map(categoriaMapper::toResponse).toList();
     }
 
     @Override
@@ -91,14 +89,4 @@ public class CategoriaServiceImpl implements CategoriaService {
         categoriaRepository.delete(categoria);
     }
 
-    private CategoriaResponseDTO convertirResponse(Categoria categoria) {
-        return new CategoriaResponseDTO(
-                categoria.getIdCategoria(),
-                categoria.getNombre(),
-                categoria.getDescripcion(),
-                categoria.getEstado(),
-                categoria.getFechaCreacion(),
-                categoria.getFechaModificacion()
-        );
-    }
 }

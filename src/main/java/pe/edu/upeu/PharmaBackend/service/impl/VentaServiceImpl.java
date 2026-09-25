@@ -1,13 +1,11 @@
 package pe.edu.upeu.PharmaBackend.service.impl;
 
-import lombok.extern.java.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.PharmaBackend.dto.DetalleVentaRequestDTO;
-import pe.edu.upeu.PharmaBackend.dto.DetalleVentaResponseDTO;
 import pe.edu.upeu.PharmaBackend.dto.VentaRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.VentaResponseDTO;
 import pe.edu.upeu.PharmaBackend.entity.Cliente;
@@ -17,6 +15,7 @@ import pe.edu.upeu.PharmaBackend.entity.Venta;
 import pe.edu.upeu.PharmaBackend.enums.EstadoVenta;
 import pe.edu.upeu.PharmaBackend.exception.RecursosNoEncontradosException;
 import pe.edu.upeu.PharmaBackend.exception.ReglaNegocioException;
+import pe.edu.upeu.PharmaBackend.mapper.VentaMapper;
 import pe.edu.upeu.PharmaBackend.repository.ClienteRepository;
 import pe.edu.upeu.PharmaBackend.repository.ProductoRepository;
 import pe.edu.upeu.PharmaBackend.repository.VentaRepository;
@@ -33,15 +32,18 @@ public class VentaServiceImpl implements VentaService {
     private final VentaRepository ventaRepository;
     private final ClienteRepository clienteRepository;
     private final ProductoRepository productoRepository;
+    private final VentaMapper ventaMapper;
 
     public VentaServiceImpl(
             VentaRepository ventaRepository,
             ClienteRepository clienteRepository,
-            ProductoRepository productoRepository) {
+            ProductoRepository productoRepository,
+            VentaMapper ventaMapper) {
 
         this.ventaRepository = ventaRepository;
         this.clienteRepository = clienteRepository;
         this.productoRepository = productoRepository;
+        this.ventaMapper = ventaMapper;
     }
 
     @Override
@@ -94,7 +96,7 @@ public class VentaServiceImpl implements VentaService {
 
         Venta guardada =ventaRepository.save(venta);
 
-        return convertirResponse(guardada);
+        return ventaMapper.toResponse(guardada);
     }
 
     @Override
@@ -103,13 +105,13 @@ public class VentaServiceImpl implements VentaService {
 
         Venta venta = ventaRepository.findById(id).orElseThrow(() ->
                 new RecursosNoEncontradosException("Venta no encontrada con id: "+ id));
-        return convertirResponse(venta);
+        return ventaMapper.toResponse(venta);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<VentaResponseDTO> listar() {
-        return ventaRepository.findAll().stream().map(this::convertirResponse).toList();
+        return ventaRepository.findAll().stream().map(ventaMapper::toResponse).toList();
     }
 
     @Override
@@ -125,7 +127,7 @@ public class VentaServiceImpl implements VentaService {
         }
         venta.setEstado(EstadoVenta.ANULADA);
 
-        return convertirResponse(venta);
+        return ventaMapper.toResponse(venta);
     }
 
     @Override
@@ -145,7 +147,7 @@ public class VentaServiceImpl implements VentaService {
         LocalDateTime desdeHora = (desde == null) ? null : desde.atStartOfDay();
         LocalDateTime hastaHora = (hasta == null) ? null : hasta.atTime(LocalTime.MAX);
 
-        List<VentaResponseDTO> ventas = ventaRepository.buscar(clienteId, estado, desdeHora, hastaHora, sort).stream().map(this::convertirResponse).toList();
+        List<VentaResponseDTO> ventas = ventaRepository.buscar(clienteId, estado, desdeHora, hastaHora, sort).stream().map(ventaMapper::toResponse).toList();
 
         LOG.info("Fin buscar ventas | clienteId={} | estado={} | desde={} | hasta={} | "
                         + "ordenarPor={} | direccion={} | filas={} | duracionMs={}",
@@ -155,44 +157,7 @@ public class VentaServiceImpl implements VentaService {
         return ventas;
     }
 
-    @Override
-    public List<VentaResponseDTO> reporteVentasPorCategoria(LocalDateTime desde, LocalDateTime hasta) {
-        return List.of();
-    }
 
-    @Override
-    public List<VentaResponseDTO> reporteProductosMasVendidos(LocalDateTime desde, LocalDateTime hasta) {
-        return List.of();
-    }
-
-
-    private VentaResponseDTO convertirResponse(Venta venta) {
-
-        List<DetalleVentaResponseDTO> detalles =
-                venta.getDetalles()
-                        .stream()
-                        .map(detalle ->
-                                new DetalleVentaResponseDTO(
-                                        detalle.getProducto().getIdProducto(),
-                                        detalle.getProducto().getNombre(),
-                                        detalle.getCantidad(),
-                                        detalle.getPrecio(),
-                                        detalle.getSubtotal()
-                                )
-                        ).toList();
-
-        String clienteNombre = venta.getCliente().getNombres()+ " "+ venta.getCliente().getApellidos();
-
-        return new VentaResponseDTO(
-                venta.getId(),
-                venta.getFechaRegistro(),
-                venta.getCliente().getId(),
-                clienteNombre,
-                venta.getEstado().name(),
-                venta.getTotal(),
-                detalles
-        );
-    }
     public void validarFechas(
             LocalDateTime desde,
             LocalDateTime hasta
@@ -214,6 +179,7 @@ public class VentaServiceImpl implements VentaService {
             "estado",
             "total"
     );
+
 
     private Sort construirSort(String ordenarPor, String direccion) {
 
