@@ -8,7 +8,7 @@ import pe.edu.upeu.PharmaBackend.dto.ClienteRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.ClienteResponseDTO;
 import pe.edu.upeu.PharmaBackend.service.service.ClienteService;
 
-import java.util.List;
+import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 
 @RestController
 @RequestMapping("/api/v1/clientes")
@@ -21,8 +21,12 @@ public class ClienteController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ClienteResponseDTO>> findAll() {
-        return ResponseEntity.ok(clienteService.readAll());
+    public ResponseEntity<PaginaResponseDTO<ClienteResponseDTO>> findAll(
+            @RequestParam(defaultValue = "0") int pagina,
+            @RequestParam(defaultValue = "10") int tamanio,
+            @RequestParam(defaultValue = "apellidos") String ordenarPor,
+            @RequestParam(defaultValue = "asc") String direccion) {
+        return ResponseEntity.ok(clienteService.listar(pagina, tamanio, ordenarPor, direccion));
     }
 
     @GetMapping("/{id}")

@@ -14,6 +14,10 @@ import pe.edu.upeu.PharmaBackend.repository.ClienteRepository;
 import pe.edu.upeu.PharmaBackend.service.service.ClienteService;
 
 import java.util.List;
+import java.util.Set;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 
 @Service
 public class ClienteServiceImpl
@@ -98,6 +102,26 @@ public class ClienteServiceImpl
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public PaginaResponseDTO<ClienteResponseDTO> listar(int pagina, int tamanio, String ordenarPor, String direccion) {
+        if (pagina < 0 || tamanio < 1) {
+            throw new ReglaNegocioException("La página debe ser mayor o igual a 0 y el tamaño mayor a 0.");
+        }
+        if (!Set.of("id", "dni", "nombres", "apellidos", "email").contains(ordenarPor)) {
+            throw new ReglaNegocioException("Campo de orden no permitido: " + ordenarPor);
+        }
+        if (!"asc".equalsIgnoreCase(direccion) && !"desc".equalsIgnoreCase(direccion)) {
+            throw new ReglaNegocioException("La dirección debe ser asc o desc.");
+        }
+        Sort orden = Sort.by(Sort.Direction.fromString(direccion), ordenarPor);
+        if (!"id".equals(ordenarPor)) orden = orden.and(Sort.by("id"));
+        var resultado = clienteRepository.findAll(PageRequest.of(pagina, tamanio, orden))
+                .map(clienteMapper::toResponse);
+        return new PaginaResponseDTO<>(resultado.getContent(), resultado.getNumber(), resultado.getSize(),
+                resultado.getTotalElements(), resultado.getTotalPages(), resultado.isLast());
+    }
+
+    @Override
     @Transactional
     public ClienteResponseDTO update(
             Long id,
@@ -163,10 +187,14 @@ public class ClienteServiceImpl
                                 )
                         );
 
-        clienteRepository.delete(cliente);
+        if (!Boolean.TRUE.equals(cliente.getEstado())) {
+            throw new ReglaNegocioException("El cliente ya está inactivo.");
+        }
+        cliente.setEstado(false);
+        clienteRepository.save(cliente);
 
         log.info(
-                "Cliente id={} eliminado correctamente",
+                "Cliente id={} dado de baja correctamente",
                 id
         );
     }
