@@ -86,7 +86,11 @@ public class CategoriaServiceImpl implements CategoriaService {
                         "Categoría con id " + id + " no encontrada"
                 )
         );
-        categoriaRepository.delete(categoria);
+        if (!Boolean.TRUE.equals(categoria.getEstado())){
+            throw new ReglaNegocioException("La categoria ya esta inactivo");
+        }
+        categoria.setEstado(false);
+        categoriaRepository.save(categoria);
     }
 
 }
