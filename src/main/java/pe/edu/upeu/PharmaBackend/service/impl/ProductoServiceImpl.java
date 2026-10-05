@@ -3,7 +3,10 @@ package pe.edu.upeu.PharmaBackend.service.impl;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 import pe.edu.upeu.PharmaBackend.dto.ProductoRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.ProductoResponseDTO;
 import pe.edu.upeu.PharmaBackend.entity.Categoria;
@@ -17,6 +20,7 @@ import pe.edu.upeu.PharmaBackend.service.service.ProductoService;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
@@ -48,6 +52,9 @@ public class ProductoServiceImpl implements ProductoService {
                 "Categoria con id " + request.getCategoriaId() + " no encontrada"
         ));
 
+        if (!Boolean.TRUE.equals(categoria.getEstado())) {
+            throw new ReglaNegocioException("La categoria esta inactiva. Seleccione una categoria activa.");
+        }
 
         Producto producto = productoMapper.toEntity(request, categoria);
         Producto productoCreado = productoRepository.save(producto);
@@ -61,7 +68,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     @Transactional
-    public ProductoResponseDTO update(Long aLong, ProductoRequestDTO request) {;
+    public ProductoResponseDTO update(Long aLong, ProductoRequestDTO request) {
         String nombre = request.getNombre().trim();
 
         LOG.info("Actualizando producto con id: {}, Nombre: {}", aLong, nombre);
@@ -75,6 +82,10 @@ public class ProductoServiceImpl implements ProductoService {
         Producto producto = productoRepository.findById(aLong).orElseThrow(()-> new RecursosNoEncontradosException(
                 "Producto con id " + aLong + " no encontrado"
         ));
+        if (!Boolean.TRUE.equals(categoria.getEstado())) {
+            throw new ReglaNegocioException("La categoria esta inactiva. Seleccione una categoria activa.");
+        }
+
         productoMapper.actualizarEntidad(producto, request, categoria);
 
         Producto productoUpdate = productoRepository.save(producto);
@@ -105,12 +116,52 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     @Transactional
     public void delete(Long aLong) {
-        LOG.info("Eliminando producto con id: {}", aLong);
+        LOG.info("Dando de baja producto con id: {}", aLong);
         Producto producto = productoRepository.findById(aLong).orElseThrow(()-> new RecursosNoEncontradosException(
                 "Producto con id " + aLong + " no encontrado"
         ));
-        LOG.info("Producto eliminado con id: {}", producto.getIdProducto());
-        productoRepository.delete(producto);
+        if (!Boolean.TRUE.equals(producto.getEstado())) {
+            throw new ReglaNegocioException(
+                    "El producto ya esta inactivo");
+        }
 
+        producto.setEstado(false);
+        productoRepository.save(producto);
+
+        LOG.info("Producto dado de baja con id: {}", producto.getIdProducto());
+    }
+
+    @Override
+    public PaginaResponseDTO<ProductoResponseDTO> listar(int pagina, int tamanio, String ordenarPor, String direccion) {
+        if (pagina < 0 || tamanio < 1) {
+            throw new ReglaNegocioException(
+                    "La pagina debe ser mayor o igual a 0 y el tamaño mayor a 0"
+            );
+        }
+        if (!Set.of("id", "nombre", "precio", "stock").contains(ordenarPor)) {
+            throw new ReglaNegocioException(
+                    "Campo de orden no permitido: " + ordenarPor
+            );
+        }
+        if (!"asc".equalsIgnoreCase(direccion) && !"desc".equalsIgnoreCase(direccion)) {
+            throw new ReglaNegocioException(
+                    "La direccion debe ser asc o desc"
+            );
+        }
+        String campo = "id".equalsIgnoreCase(ordenarPor) ? "idProducto" : ordenarPor;
+
+        Sort orden = Sort.by(Sort.Direction.fromString(direccion), campo);
+
+        if (!"idProducto".equals(campo)) orden = orden.and(Sort.by("idProducto"));
+
+        var resultado = productoRepository.findAll(PageRequest.of(pagina, tamanio, orden)).map(productoMapper::toResponse);
+
+        return new PaginaResponseDTO<>(
+                resultado.getContent(),
+                resultado.getNumber(),
+                resultado.getSize(),
+                resultado.getTotalElements(),
+                resultado.getTotalPages(),
+                resultado.isLast());
     }
 }

@@ -20,7 +20,7 @@ public class Producto {
     @Column(name = "id_producto")
     private Long idProducto;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 150)
     private String nombre;
 
     @Column(nullable = false, precision = 10, scale = 2)
