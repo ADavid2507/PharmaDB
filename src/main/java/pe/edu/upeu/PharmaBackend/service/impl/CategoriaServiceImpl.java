@@ -12,6 +12,7 @@ import pe.edu.upeu.PharmaBackend.entity.Categoria;
 import pe.edu.upeu.PharmaBackend.mapper.CategoriaMapper;
 import pe.edu.upeu.PharmaBackend.repository.CategoriaRepository;
 import pe.edu.upeu.PharmaBackend.service.service.CategoriaService;
+import pe.edu.upeu.PharmaBackend.repository.ProductoRepository;
 
 import java.util.List;
 
@@ -22,10 +23,12 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     private final CategoriaRepository categoriaRepository;
     private final CategoriaMapper categoriaMapper;
+    private final ProductoRepository productoRepository;
 
-    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper) {
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper, ProductoRepository productoRepository) {
         this.categoriaRepository = categoriaRepository;
         this.categoriaMapper = categoriaMapper;
+        this.productoRepository = productoRepository;
     }
 
 
@@ -86,11 +89,12 @@ public class CategoriaServiceImpl implements CategoriaService {
                         "Categoría con id " + id + " no encontrada"
                 )
         );
-        if (!Boolean.TRUE.equals(categoria.getEstado())){
-            throw new ReglaNegocioException("La categoria ya esta inactivo");
+        if (productoRepository.existsByCategoriaIdCategoria(id)){
+            throw new ReglaNegocioException(
+                    "No se puede eliminar la categoria porque tiene productos asociados"
+            );
         }
-        categoria.setEstado(false);
-        categoriaRepository.save(categoria);
+        categoriaRepository.delete(categoria);
     }
 
 }
