@@ -16,6 +16,11 @@ import pe.edu.upeu.PharmaBackend.controller.VentaController;
 import pe.edu.upeu.PharmaBackend.exception.GlobalExceptionHandler;
 import pe.edu.upeu.PharmaBackend.service.service.ReporteService;
 import pe.edu.upeu.PharmaBackend.service.service.VentaService;
+import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
+import pe.edu.upeu.PharmaBackend.enums.EstadoVenta;
+import java.util.List;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -75,5 +80,16 @@ class ConsultaWebTests {
                 .andExpect(jsonPath("$.path").value("/api/v1/ventas/buscar"))
                 .andExpect(jsonPath("$.validationErrors.desde").exists())
                 .andExpect(jsonPath("$.message").value("El parámetro 'desde' tiene un formato inválido. Use una fecha ISO yyyy-MM-dd"));
+    }
+
+    @Test void publicFiltersReturnPageContract() throws Exception {
+        VentaService service = context.getBean(VentaService.class);
+        when(service.buscarPaginado(7L, EstadoVenta.ANULADA, null, null, "fechaRegistro", "desc", 1, 10))
+                .thenReturn(new PaginaResponseDTO<>(List.of(), 1, 10, 10, 1, true));
+        mvc.perform(get("/api/v1/ventas/buscar").param("clienteId", "7").param("estado", "ANULADA")
+                .param("pagina", "1").param("tamanio", "10").param("ordenarPor", "fechaRegistro").param("direccion", "desc"))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.pagina").value(1))
+                .andExpect(jsonPath("$.contenido").isArray()).andExpect(jsonPath("$.totalElementos").value(10));
+        verify(service).buscarPaginado(7L, EstadoVenta.ANULADA, null, null, "fechaRegistro", "desc", 1, 10);
     }
 }

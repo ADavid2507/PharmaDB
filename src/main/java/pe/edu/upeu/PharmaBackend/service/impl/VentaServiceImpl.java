@@ -3,6 +3,8 @@ package pe.edu.upeu.PharmaBackend.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.PageRequest;
+import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.PharmaBackend.dto.DetalleVentaRequestDTO;
@@ -70,7 +72,7 @@ public class VentaServiceImpl implements VentaService {
                 throw new ReglaNegocioException("El producto "+ producto.getNombre()+ " se encuentra inactivo");
             }
 
-            if (producto.getStock()< item.getCantidad()) {
+            if (productoRepository.descontarStock(item.getProductoId(), item.getCantidad()) != 1) {
 
                 throw new ReglaNegocioException("Stock insuficiente para "+ producto.getNombre()+ ". Disponible: "+ producto.getStock()
                         + ", solicitado: "+ item.getCantidad());
@@ -89,7 +91,7 @@ public class VentaServiceImpl implements VentaService {
 
             total = total.add(subtotal);
 
-            producto.setStock(producto.getStock()- item.getCantidad());
+            // No modificar la entidad: el UPDATE condicional ya descontó el stock.
         }
 
         venta.setTotal(total);
@@ -173,6 +175,26 @@ public class VentaServiceImpl implements VentaService {
 
 
     private static final String ORDEN_POR_DEFECTO = "id";
+    @Override
+    @Transactional(readOnly = true)
+    public PaginaResponseDTO<VentaResponseDTO> buscarPaginado(Long clienteId, EstadoVenta estado,
+            LocalDate desde, LocalDate hasta, String ordenarPor, String direccion, int pagina, int tamanio) {
+        if (desde != null && hasta != null && desde.isAfter(hasta)) {
+            throw new ReglaNegocioException("La fecha inicial debe ser anterior a la fecha final");
+        }
+        if (pagina < 0 || tamanio < 1 || tamanio > 100) {
+            throw new ReglaNegocioException("La página debe ser mayor o igual a cero y el tamaño debe estar entre 1 y 100");
+        }
+        Sort sort = construirSort("fecha".equals(ordenarPor) ? "fechaRegistro" : ordenarPor, direccion)
+                .and(Sort.by("id").descending());
+        var resultado = ventaRepository.buscarPaginado(clienteId, estado,
+                desde == null ? null : desde.atStartOfDay(),
+                hasta == null ? null : hasta.atTime(LocalTime.MAX),
+                PageRequest.of(pagina, tamanio, sort));
+        return new PaginaResponseDTO<>(resultado.getContent().stream().map(ventaMapper::toResponse).toList(),
+                resultado.getNumber(), resultado.getSize(), resultado.getTotalElements(),
+                resultado.getTotalPages(), resultado.isLast());
+    }
     private static final List<String> CAMPOS_ORDENABLES = List.of(
             "id",
             "fechaRegistro",
