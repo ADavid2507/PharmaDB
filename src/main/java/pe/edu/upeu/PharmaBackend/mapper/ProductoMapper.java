@@ -20,6 +20,7 @@ public class ProductoMapper {
         producto.setNombre(request.getNombre().trim());
         producto.setPrecio(request.getPrecio());
         producto.setStock(request.getStock());
+        producto.setEstado(request.getEstado());
         producto.setCategoria(categoria);
     }
 
@@ -33,8 +34,9 @@ public class ProductoMapper {
                 producto.getNombre(),
                 producto.getPrecio(),
                 producto.getStock(),
-                categoria,
                 producto.getEstado(),
+                producto.getCategoria().getIdCategoria(),
+                producto.getCategoria().getNombre(),
                 producto.getFechaCreacion(),
                 producto.getFechaModificacion()
         );

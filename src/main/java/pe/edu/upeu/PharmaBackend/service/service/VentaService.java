@@ -2,6 +2,7 @@ package pe.edu.upeu.PharmaBackend.service.service;
 
 import pe.edu.upeu.PharmaBackend.dto.VentaRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.VentaResponseDTO;
+import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 import pe.edu.upeu.PharmaBackend.enums.EstadoVenta;
 import pe.edu.upeu.PharmaBackend.service.generic.CrudService;
 
@@ -10,6 +11,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface VentaService{
+    PaginaResponseDTO<VentaResponseDTO> buscarPaginado(Long clienteId, EstadoVenta estado,
+            LocalDate desde, LocalDate hasta, String ordenarPor, String direccion, int pagina, int tamanio);
     VentaResponseDTO registrar(VentaRequestDTO request);
     VentaResponseDTO buscar(Long id);
     List<VentaResponseDTO> listar();

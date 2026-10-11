@@ -63,7 +63,7 @@ public class VentaController {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<List<VentaResponseDTO>> buscar(
+    public ResponseEntity<?> buscar(
             @RequestParam(required = false)
             Long idCliente,
             @RequestParam(required = false)
@@ -77,9 +77,20 @@ public class VentaController {
             @RequestParam(required = false)
             String ordenarPor,
             @RequestParam(required = false)
-            String direccion
+            String direccion,
+            @RequestParam(required = false) Long clienteId,
+            @RequestParam(required = false) EstadoVenta estado,
+            @RequestParam(required = false) Integer pagina,
+            @RequestParam(required = false) Integer tamanio
 
     ){
-        return ResponseEntity.ok(ventaService.buscar(idCliente, estadoVenta, desde, hasta, ordenarPor, direccion));
+        Long clienteFiltro = clienteId != null ? clienteId : idCliente;
+        EstadoVenta estadoFiltro = estado != null ? estado : estadoVenta;
+        // Mantiene la lista para consumidores anteriores; con paginación devuelve el contrato de la SPA.
+        if (pagina != null || tamanio != null) {
+            return ResponseEntity.ok(ventaService.buscarPaginado(clienteFiltro, estadoFiltro, desde, hasta,
+                    ordenarPor, direccion, pagina == null ? 0 : pagina, tamanio == null ? 10 : tamanio));
+        }
+        return ResponseEntity.ok(ventaService.buscar(clienteFiltro, estadoFiltro, desde, hasta, ordenarPor, direccion));
     }
 }
