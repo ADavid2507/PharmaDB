@@ -7,6 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.PharmaBackend.dto.auth.EmpleadoResponseDTO;
+import pe.edu.upeu.PharmaBackend.dto.auth.AsignarRolesRequestDTO;
+import pe.edu.upeu.PharmaBackend.dto.auth.CambiarEstadoUsuarioRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.auth.RolResponseDTO;
 import pe.edu.upeu.PharmaBackend.dto.auth.UsuarioRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.auth.UsuarioResponseDTO;
@@ -124,5 +126,49 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .stream()
                 .map(usuarioMapper::toRolResponse)
                 .toList();
+    }
+
+    @Override
+    @Transactional
+    public UsuarioResponseDTO asignarRoles(
+            Long id, AsignarRolesRequestDTO request, String usernameActual) {
+        Usuario usuario = buscarPorId(id);
+        List<Rol> roles = rolRepository.findAllById(request.getRolIds());
+        Set<Long> encontrados = roles.stream().map(Rol::getId).collect(Collectors.toSet());
+        Set<Long> faltantes = new java.util.TreeSet<>(request.getRolIds());
+        faltantes.removeAll(encontrados);
+        if (!faltantes.isEmpty()) {
+            throw new RecursosNoEncontradosException("Roles no encontrados: " + faltantes);
+        }
+        if (usuario.getUsername().equalsIgnoreCase(usernameActual)
+                && roles.stream().noneMatch(rol -> "ADMIN".equals(rol.getNombre()))) {
+            throw new ReglaNegocioException("No puede quitarse a sí mismo el rol ADMIN");
+        }
+        // Reemplaza la relación muchos a muchos, conservando la transacción.
+        usuario.setRoles(new HashSet<>(roles));
+        Usuario guardado = usuarioRepository.save(usuario);
+        log.info("Roles actualizados: usuario={} roles={} por={}",
+                usuario.getUsername(), usuarioMapper.nombresRoles(roles), usernameActual);
+        return usuarioMapper.toUsuarioResponse(guardado);
+    }
+
+    @Override
+    @Transactional
+    public UsuarioResponseDTO cambiarEstado(
+            Long id, CambiarEstadoUsuarioRequestDTO request, String usernameActual) {
+        Usuario usuario = buscarPorId(id);
+        if (!request.getEstado() && usuario.getUsername().equalsIgnoreCase(usernameActual)) {
+            throw new ReglaNegocioException("No puede desactivarse a sí mismo");
+        }
+        usuario.setEstado(request.getEstado());
+        Usuario guardado = usuarioRepository.save(usuario);
+        log.info("Estado actualizado: usuario={} estado={} por={}",
+                usuario.getUsername(), usuario.getEstado(), usernameActual);
+        return usuarioMapper.toUsuarioResponse(guardado);
+    }
+
+    private Usuario buscarPorId(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RecursosNoEncontradosException("Usuario no encontrado con id: " + id));
     }
 }
