@@ -45,7 +45,10 @@ class ConsultaWebTests {
         context.register(WebConfig.class, CorsConfig.class, VentaController.class,
                 ReporteController.class, GlobalExceptionHandler.class);
         context.refresh();
-        mvc = MockMvcBuilders.webAppContextSetup(context).build();
+        mvc = MockMvcBuilders.webAppContextSetup(context)
+                .addFilters(new org.springframework.web.filter.CorsFilter(
+                        context.getBean("corsConfigurationSource", org.springframework.web.cors.CorsConfigurationSource.class)))
+                .build();
     }
 
     @AfterEach void close() { context.close(); }
@@ -55,6 +58,13 @@ class ConsultaWebTests {
                 .header("Origin", "http://localhost:4200"))
                 .andExpect(status().isOk())
                 .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:4200"));
+    }
+
+    @Test void nginxOriginCanReadReport() throws Exception {
+        mvc.perform(get("/api/v1/reportes/ventas-por-categoria")
+                .header("Origin", "http://localhost:8081"))
+                .andExpect(status().isOk())
+                .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:8081"));
     }
 
     @Test void otherOriginIsRejected() throws Exception {

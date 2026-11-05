@@ -1,5 +1,8 @@
 package pe.edu.upeu.PharmaBackend.service.impl;
 
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -34,6 +37,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "categorias", allEntries = true)
     public CategoriaResponseDTO create(CategoriaRequestDTO request) {
         String nombre = request.getNombre().trim();
         if(categoriaRepository.existsByNombreIgnoreCase(nombre)){
@@ -48,6 +52,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = { "categorias", "productos" }, allEntries = true)
     public CategoriaResponseDTO update(Long id, CategoriaRequestDTO request) {
         Categoria categoria = categoriaRepository.findById(id).orElseThrow(()->
                 new RecursosNoEncontradosException(
@@ -67,6 +72,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable(cacheNames = "categorias", key = "'id-' + #id")
     public CategoriaResponseDTO read(Long id) {
         Categoria categoria = categoriaRepository.findById(id)
                 .orElseThrow(() -> new RecursosNoEncontradosException(
@@ -77,12 +83,18 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable(cacheNames = "categorias", key = "'todas'")
     public List<CategoriaResponseDTO> readAll() {
-        return categoriaRepository.findAll().stream().map(categoriaMapper::toResponse).toList();
+        long inicio = System.currentTimeMillis();
+        LOG.info("Inicio listar categorias");
+        var categorias = categoriaRepository.findAll().stream().map(categoriaMapper::toResponse).toList();
+        LOG.info("Fin listar categorias | duracionMs={}", System.currentTimeMillis() - inicio);
+        return categorias;
     }
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "categorias", allEntries = true)
     public void delete(Long id) {
         Categoria categoria = categoriaRepository.findById(id).orElseThrow(()->
                 new RecursosNoEncontradosException(
