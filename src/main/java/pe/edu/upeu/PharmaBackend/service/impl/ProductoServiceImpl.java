@@ -1,6 +1,9 @@
 package pe.edu.upeu.PharmaBackend.service.impl;
 
 
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.CacheEvict;
+
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +43,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Transactional
     @Override
+    @CacheEvict(cacheNames = "productos", allEntries = true)
     public ProductoResponseDTO create(ProductoRequestDTO request) {
         String nombre = request.getNombre().trim();
 
@@ -68,6 +72,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "productos", allEntries = true)
     public ProductoResponseDTO update(Long aLong, ProductoRequestDTO request) {
         String nombre = request.getNombre().trim();
 
@@ -98,6 +103,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     @Transactional(readOnly = true)
+    @Cacheable(cacheNames = "productos", key = "'id-' + #aLong")
     public ProductoResponseDTO read(Long aLong) {
         Producto producto = productoRepository.findById(aLong)
                 .orElseThrow(() -> new RecursosNoEncontradosException(
@@ -115,6 +121,7 @@ public class ProductoServiceImpl implements ProductoService {
 
     @Override
     @Transactional
+    @CacheEvict(cacheNames = "productos", allEntries = true)
     public void delete(Long aLong) {
         LOG.info("Dando de baja producto con id: {}", aLong);
         Producto producto = productoRepository.findById(aLong).orElseThrow(()-> new RecursosNoEncontradosException(
@@ -132,6 +139,8 @@ public class ProductoServiceImpl implements ProductoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    @Cacheable(cacheNames = "productos", key = "#pagina + '-' + #tamanio + '-' + #ordenarPor + '-' + #direccion")
     public PaginaResponseDTO<ProductoResponseDTO> listar(int pagina, int tamanio, String ordenarPor, String direccion) {
         if (pagina < 0 || tamanio < 1) {
             throw new ReglaNegocioException(

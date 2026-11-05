@@ -16,7 +16,7 @@ spring:
     database-platform: org.hibernate.dialect.OracleDialect
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: false
 
     properties:
       hibernate:
@@ -29,13 +29,16 @@ springdoc:
     enabled: true
 
 logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%X{requestId}] %logger{36} - %msg%n"
   level:
+    org.hibernate.SQL: DEBUG
     pe.edu.upeu.PharmaBackend: DEBUG
     org.hibernate.orm.jdbc.bind: OFF
 
 app:
   cors:
-    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200,http://localhost:8081}
 
   jwt:
     secret: w9Z6dP/dzykNH/uiI3Z/KGjBlP0H4Ji+Tuq4fm2cTNuLD4jWafu1gBL74V2SJEvy

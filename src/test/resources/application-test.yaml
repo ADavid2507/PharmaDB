@@ -1,4 +1,8 @@
 spring:
+  flyway:
+    enabled: false
+  cache:
+    type: none
   datasource:
     url: jdbc:h2:mem:pharma_test;MODE=Oracle;DB_CLOSE_DELAY=-1
     driver-class-name: org.h2.Driver
@@ -12,3 +16,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
     open-in-view: false
+
+app:
+  jwt:
+    secret: c2VjcmV0by1zb2xvLXBhcmEtcHJ1ZWJhcy1zMTMtMzItYnl0ZXM=

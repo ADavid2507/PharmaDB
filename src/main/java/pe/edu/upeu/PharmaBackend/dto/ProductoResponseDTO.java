@@ -1,5 +1,7 @@
 package pe.edu.upeu.PharmaBackend.dto;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +14,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ProductoResponseDTO {
+public class ProductoResponseDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String nombre;
     private BigDecimal precio;
