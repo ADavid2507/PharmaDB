@@ -54,6 +54,8 @@ public class VentaServiceImpl implements VentaService {
     @Transactional
     @CacheEvict(cacheNames = "productos", allEntries = true)
     public VentaResponseDTO registrar(VentaRequestDTO request) {
+        LOG.info("Inicio registrar venta | clienteId={} | lineas={}",
+                request.getClienteId(), request.getDetalles().size());
         Cliente cliente = clienteRepository.findById(request.getClienteId())
                 .orElseThrow(() ->new RecursosNoEncontradosException("Cliente no encontrado con id: "+ request.getClienteId()));
 
@@ -100,6 +102,9 @@ public class VentaServiceImpl implements VentaService {
         venta.setTotal(total);
 
         Venta guardada =ventaRepository.save(venta);
+
+        LOG.info("Fin registrar venta | ventaId={} | lineas={}",
+                guardada.getId(), guardada.getDetalles().size());
 
         return ventaMapper.toResponse(guardada);
     }
