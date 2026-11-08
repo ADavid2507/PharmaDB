@@ -1,0 +1,33 @@
+> Building...
+√ Building...
+Initial chunk files | Names             |  Raw size | Estimated transfer size
+chunk-BMV5uY_9.js   | -                 | 206.43 kB |                60.22 kB
+chunk-BEvOMWe0.js   | -                 |  94.13 kB |                23.79 kB
+main-KTWN3EZY.js    | main              |  15.56 kB |                 5.04 kB
+styles-7JTV3UGE.css | styles            |   2.13 kB |               702 bytes
+chunk-Cb9QxR1b.js   | -                 |  72 bytes |                72 bytes
+
+                    | Initial total     | 318.32 kB |                89.83 kB
+
+Lazy chunk files    | Names             |  Raw size | Estimated transfer size
+chunk-qUguGAmS.js   | -                 |  49.73 kB |                10.18 kB
+chunk-C2jX0fup.js   | ventas-routes     |  32.94 kB |                 7.97 kB
+chunk-DoQ1bTVb.js   | productos-routes  |  19.08 kB |                 5.27 kB
+chunk-q5_1CMkt.js   | clientes-routes   |  14.87 kB |                 4.23 kB
+chunk-B-J2q5Yk.js   | categorias-routes |   9.88 kB |                 3.18 kB
+chunk-DVES-ZbM.js   | ventas-categoria  |   8.03 kB |                 2.86 kB
+chunk-DuCiVJ6a.js   | mi-cuenta         |   4.47 kB |                 1.76 kB
+chunk-yY548eJm.js   | login             |   3.96 kB |                 1.61 kB
+chunk-BfBqNXtr.js   | inicio            |   1.66 kB |               803 bytes
+chunk-pCQGQECq.js   | mas-vendidos      |   1.38 kB |               725 bytes
+chunk-Cux03W2r.js   | -                 | 663 bytes |               663 bytes
+chunk-BNdOeFbD.js   | -                 | 640 bytes |               640 bytes
+chunk-DfCUANJV.js   | acceso-denegado   | 635 bytes |               635 bytes
+chunk-DDgFN755.js   | -                 | 600 bytes |               600 bytes
+chunk-CYvVfIUH.js   | no-encontrado     | 513 bytes |               513 bytes
+...and 4 more lazy chunks files. Use "--verbose" to show all the files.
+
+Application bundle generation complete. [3.923 seconds] - 2026-11-08T15:18:27.928Z
+
+Output location: C:\Users\David\Downloads\pharma-frontend\.tmp\s13-simple\antes
+

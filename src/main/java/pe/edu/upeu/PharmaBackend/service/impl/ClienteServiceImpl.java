@@ -40,10 +40,7 @@ public class ClienteServiceImpl
     public ClienteResponseDTO create(
             ClienteRequestDTO request) {
 
-        log.info(
-                "Registrando cliente con DNI={}",
-                request.getDni()
-        );
+        log.info("Registrando cliente");
 
         String dni = request.getDni().trim();
         String email = request.getEmail()
