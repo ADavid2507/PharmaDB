@@ -1,0 +1,1 @@
+2026-11-08 08:59:01,063 INFO  [a5769a80] p.e.u.P.config.RequestIdFilter - GET /api/v1/productos/999999999 -> 404 (58 ms)
