@@ -1,0 +1,14 @@
+# Usar junto al perfil test, con classpath de pruebas.
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:h2:mem:pharma_e2e;MODE=Oracle;DB_CLOSE_DELAY=-1
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+  flyway:
+    enabled: false
+logging:
+  level:
+    org.hibernate.SQL: WARN

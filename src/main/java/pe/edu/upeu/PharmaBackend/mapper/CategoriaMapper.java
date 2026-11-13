@@ -22,6 +22,6 @@ public class CategoriaMapper {
     public CategoriaResponseDTO toResponse(Categoria categoria) {
         return new CategoriaResponseDTO(
                 categoria.getIdCategoria(), categoria.getNombre(), categoria.getDescripcion(),
-                categoria.getEstado(), categoria.getFechaCreacion(), categoria.getFechaModificacion());
+                categoria.getEstado(), categoria.getFechaCreacion(), categoria.getFechaModificacion(), categoria.getCreadoPor(), categoria.getModificadoPor());
     }
 }

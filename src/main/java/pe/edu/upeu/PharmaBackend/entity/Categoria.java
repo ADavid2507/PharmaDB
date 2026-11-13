@@ -1,6 +1,9 @@
 package pe.edu.upeu.PharmaBackend.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -8,10 +11,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "categorias")
 @Getter
 @Setter
 public class Categoria {
+    @CreatedBy
+    @Column(name = "creado_por", length = 50, updatable = false)
+    private String creadoPor;
+    @LastModifiedBy
+    @Column(name = "modificado_por", length = 50)
+    private String modificadoPor;
+
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id")
