@@ -20,7 +20,7 @@ class VentaServiceTests {
     private final VentaRepository ventas = mock(VentaRepository.class);
     private final ClienteRepository clientes = mock(ClienteRepository.class);
     private final ProductoRepository productos = mock(ProductoRepository.class);
-    private final VentaServiceImpl service = new VentaServiceImpl(ventas, clientes, productos, new VentaMapper());
+    private final VentaServiceImpl service = new VentaServiceImpl(ventas, clientes, productos, new VentaMapper(), org.mockito.Mockito.mock(org.springframework.context.ApplicationEventPublisher.class));
 
     private void preparar() {
         Cliente c = new Cliente(); c.setId(1L); c.setEstado(true);

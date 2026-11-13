@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.context.ApplicationEventPublisher;
+import pe.edu.upeu.PharmaBackend.auditoria.EventoAuditoria;
 import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 import pe.edu.upeu.PharmaBackend.dto.ProductoRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.ProductoResponseDTO;
@@ -27,6 +29,7 @@ import java.util.Set;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
+    private final ApplicationEventPublisher eventos;
 
     private static final Logger LOG = LoggerFactory.getLogger(ProductoServiceImpl.class);
 
@@ -35,7 +38,8 @@ public class ProductoServiceImpl implements ProductoService {
     private final ProductoMapper productoMapper;
 
 
-    public ProductoServiceImpl(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ProductoMapper productoMapper) {
+    public ProductoServiceImpl(ProductoRepository productoRepository, CategoriaRepository categoriaRepository, ProductoMapper productoMapper, ApplicationEventPublisher eventos) {
+        this.eventos = eventos;
         this.productoRepository = productoRepository;
         this.categoriaRepository = categoriaRepository;
         this.productoMapper = productoMapper;
@@ -91,9 +95,13 @@ public class ProductoServiceImpl implements ProductoService {
             throw new ReglaNegocioException("La categoria esta inactiva. Seleccione una categoria activa.");
         }
 
+        var precioAnterior = producto.getPrecio();
         productoMapper.actualizarEntidad(producto, request, categoria);
 
-        Producto productoUpdate = productoRepository.save(producto);
+        Producto productoUpdate = productoRepository.saveAndFlush(producto);
+        if (precioAnterior.compareTo(producto.getPrecio()) != 0) {
+            eventos.publishEvent(EventoAuditoria.de("PRECIO_MODIFICADO", "Producto", producto.getIdProducto(), precioAnterior + " -> " + producto.getPrecio()));
+        }
 
         LOG.info("Producto actualizado con id: {}, Nombre: {}", productoUpdate.getIdProducto(), productoUpdate.getNombre());
 
@@ -134,6 +142,7 @@ public class ProductoServiceImpl implements ProductoService {
 
         producto.setEstado(false);
         productoRepository.save(producto);
+        eventos.publishEvent(EventoAuditoria.de("PRODUCTO_ELIMINADO", "Producto", producto.getIdProducto(), producto.getNombre()));
 
         LOG.info("Producto dado de baja con id: {}", producto.getIdProducto());
     }
@@ -142,9 +151,9 @@ public class ProductoServiceImpl implements ProductoService {
     @Transactional(readOnly = true)
     @Cacheable(cacheNames = "productos", key = "#pagina + '-' + #tamanio + '-' + #ordenarPor + '-' + #direccion")
     public PaginaResponseDTO<ProductoResponseDTO> listar(int pagina, int tamanio, String ordenarPor, String direccion) {
-        if (pagina < 0 || tamanio < 1) {
+        if (pagina < 0 || tamanio < 1 || tamanio > 100) {
             throw new ReglaNegocioException(
-                    "La pagina debe ser mayor o igual a 0 y el tamaño mayor a 0"
+                    "La pagina debe ser mayor o igual a 0 y el tamaño entre 1 y 100"
             );
         }
         if (!Set.of("id", "nombre", "precio", "stock").contains(ordenarPor)) {
