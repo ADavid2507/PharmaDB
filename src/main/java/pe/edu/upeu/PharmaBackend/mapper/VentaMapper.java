@@ -19,6 +19,6 @@ public class VentaMapper {
         return new VentaResponseDTO(
                 venta.getId(), venta.getFechaRegistro(), venta.getCliente().getId(),
                 venta.getCliente().getNombres() + " " + venta.getCliente().getApellidos(),
-                venta.getEstado().name(), venta.getTotal(), detalles);
+                venta.getEstado().name(), venta.getTotal(), detalles, venta.getCreadoPor());
     }
 }

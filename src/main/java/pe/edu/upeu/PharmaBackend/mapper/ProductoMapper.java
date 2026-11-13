@@ -38,7 +38,7 @@ public class ProductoMapper {
                 producto.getCategoria().getIdCategoria(),
                 producto.getCategoria().getNombre(),
                 producto.getFechaCreacion(),
-                producto.getFechaModificacion()
+                producto.getFechaModificacion(), producto.getCreadoPor(), producto.getModificadoPor()
         );
     }
 }

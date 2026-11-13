@@ -25,4 +25,6 @@ public class ProductoResponseDTO implements Serializable {
     private String categoriaNombre;
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModificacion;
+    private String creadoPor;
+    private String modificadoPor;
 }

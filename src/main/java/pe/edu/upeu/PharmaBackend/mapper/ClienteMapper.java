@@ -27,7 +27,7 @@ public class ClienteMapper {
         return new ClienteResponseDTO(
                 cliente.getId(), cliente.getDni(), cliente.getNombres(), cliente.getApellidos(),
                 cliente.getEmail(), cliente.getTelefono(), cliente.getDireccion(), cliente.getEstado(),
-                cliente.getFechaCreacion(), cliente.getFechaModificacion());
+                cliente.getFechaCreacion(), cliente.getFechaModificacion(), cliente.getCreadoPor(), cliente.getModificadoPor());
     }
 
     private String normalizar(String valor) {
