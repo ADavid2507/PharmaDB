@@ -8,6 +8,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.PageRequest;
 import pe.edu.upeu.PharmaBackend.dto.PaginaResponseDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.context.ApplicationEventPublisher;
+import pe.edu.upeu.PharmaBackend.auditoria.EventoAuditoria;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.PharmaBackend.dto.DetalleVentaRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.VentaRequestDTO;
@@ -32,6 +34,7 @@ import java.time.LocalTime;
 import java.util.List;
 @Service
 public class VentaServiceImpl implements VentaService {
+    private final ApplicationEventPublisher eventos;
     private final Logger LOG = LoggerFactory.getLogger(VentaServiceImpl.class);
     private final VentaRepository ventaRepository;
     private final ClienteRepository clienteRepository;
@@ -42,7 +45,8 @@ public class VentaServiceImpl implements VentaService {
             VentaRepository ventaRepository,
             ClienteRepository clienteRepository,
             ProductoRepository productoRepository,
-            VentaMapper ventaMapper) {
+            VentaMapper ventaMapper, ApplicationEventPublisher eventos) {
+        this.eventos = eventos;
 
         this.ventaRepository = ventaRepository;
         this.clienteRepository = clienteRepository;
@@ -102,6 +106,8 @@ public class VentaServiceImpl implements VentaService {
         venta.setTotal(total);
 
         Venta guardada =ventaRepository.save(venta);
+        eventos.publishEvent(EventoAuditoria.de("VENTA_REGISTRADA", "Venta", guardada.getId(),
+            "total=" + guardada.getTotal() + " | items=" + guardada.getDetalles().size()));
 
         LOG.info("Fin registrar venta | ventaId={} | lineas={}",
                 guardada.getId(), guardada.getDetalles().size());

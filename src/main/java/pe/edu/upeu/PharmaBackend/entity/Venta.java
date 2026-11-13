@@ -1,6 +1,9 @@
 package pe.edu.upeu.PharmaBackend.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.*;
 import pe.edu.upeu.PharmaBackend.enums.EstadoVenta;
 
@@ -16,7 +19,12 @@ import java.util.List;
 @Setter
 @Table(name = "ventas")
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Venta {
+    @CreatedBy
+    @Column(name = "creado_por", length = 50, updatable = false)
+    private String creadoPor;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
