@@ -99,4 +99,30 @@ class AuditoriaIntegracionTests {
   assertThrows(pe.edu.upeu.PharmaBackend.exception.ReglaNegocioException.class, () -> auditoria.buscar(null,null,java.time.LocalDate.now(),java.time.LocalDate.now().minusDays(1),0,20));
  }
 
-}
+ @Autowired ClienteService clienteService;
+ @Autowired CategoriaService categoriaService;
+ @Test void clienteConfirmadoAuditaSinCopiarDatosPersonales() {
+  usuario("operador"); MDC.put("requestId","cliente-nuevo");
+  var dto=new ClienteRequestDTO("87654321","Nombre","Apellido","nuevo@example.invalid","999888777","Privada",true);
+  var cliente=clienteService.create(dto);
+  var e=eventos.findAll().stream().filter(a -> "CLIENTE_REGISTRADO".equals(a.getAccion()) && cliente.getId().equals(a.getEntidadId())).findFirst().orElseThrow();
+  assertEquals("operador",e.getUsuario()); assertEquals("cliente-nuevo",e.getRequestId());
+  assertEquals("Cliente registrado",e.getDetalle());
+ }
+ @Test void clienteRevertidoNoPublicaBitacora() {
+  long antes=eventos.count();
+  new TransactionTemplate(transactions).executeWithoutResult(s -> {
+   clienteService.create(new ClienteRequestDTO("87654322","Nombre","Apellido","rollback@example.invalid",null,null,true));
+   s.setRollbackOnly();
+  });
+  assertEquals(antes,eventos.count()); assertFalse(clientes.existsByDni("87654322"));
+ }
+ @Test void eliminarCategoriaAuditaSoloSiConfirma() {
+  usuario("admin");
+  Categoria c=new Categoria(); c.setNombre("Eliminar "+System.nanoTime()); var id=categorias.saveAndFlush(c).getIdCategoria();
+  long antes=eventos.count();
+  new TransactionTemplate(transactions).executeWithoutResult(s -> { categoriaService.delete(id); s.setRollbackOnly(); });
+  assertEquals(antes,eventos.count()); assertTrue(categorias.existsById(id));
+  categoriaService.delete(id);
+  assertTrue(eventos.findAll().stream().anyMatch(e -> "CATEGORIA_ELIMINADA".equals(e.getAccion()) && id.equals(e.getEntidadId())));
+ }}

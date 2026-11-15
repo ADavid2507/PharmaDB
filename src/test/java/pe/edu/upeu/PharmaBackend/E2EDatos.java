@@ -10,7 +10,7 @@ import pe.edu.upeu.PharmaBackend.repository.*;
 @Configuration @Profile("e2e")
 public class E2EDatos {
  @Bean CommandLineRunner datosE2E(UsuarioRepository usuarios, EmpleadoRepository empleados, RolRepository roles,
- CategoriaRepository categorias, ClienteRepository clientes, ProductoRepository productos, PasswordEncoder encoder,
+ CategoriaRepository categorias, ClienteRepository clientes, ProductoRepository productos, VentaRepository ventas, PasswordEncoder encoder,
  org.springframework.core.env.Environment env) {
   return args -> {
    String url=env.getRequiredProperty("spring.datasource.url");
@@ -27,6 +27,11 @@ public class E2EDatos {
    for(int n=0;n<45;n++) {
     Producto p=new Producto(); p.setNombre(n==0 ? "Paracetamol 500 mg" : "Producto E2E " + String.format("%03d",n));
     p.setPrecio(new BigDecimal("12.50")); p.setStock(1000); p.setCategoria(c); productos.save(p);
+   }
+   // Cabeceras sinteticas: volumen de listado; no se usan para probar el reporte.
+   for (int n=0; n<65; n++) {
+    Venta venta=new Venta(); venta.setCliente(cliente); venta.setTotal(BigDecimal.ZERO);
+    venta.setEstado(pe.edu.upeu.PharmaBackend.enums.EstadoVenta.REGISTRADA); ventas.save(venta);
    }
   };
  }
