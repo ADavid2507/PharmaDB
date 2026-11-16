@@ -1,0 +1,194 @@
+{
+  "date": "2026-11-15",
+  "environment": "H2 en memoria, localhost:18080, test/e2e",
+  "requests": {
+    "total": 16,
+    "pending": 0,
+    "failed": 0
+  },
+  "assertions": {
+    "total": 20,
+    "pending": 0,
+    "failed": 0
+  },
+  "failures": 0,
+  "duration_ms": 1328,
+  "cases": [
+    {
+      "name": "Login Admin",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Login Vendedor",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Productos paginados",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Página limitada",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Clientes disponibles",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Producto inválido",
+      "status": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Producto sin token",
+      "status": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Producto inexistente",
+      "status": 404,
+      "assertions": [
+        {
+          "name": "HTTP 404",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Tamaño excesivo",
+      "status": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Auditoría permitida",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Contrato paginado",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Auditoría denegada al vendedor",
+      "status": 403,
+      "assertions": [
+        {
+          "name": "HTTP 403",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Auditoría sin token",
+      "status": 401,
+      "assertions": [
+        {
+          "name": "HTTP 401",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Auditoría con fechas invertidas",
+      "status": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Venta sin productos",
+      "status": 400,
+      "assertions": [
+        {
+          "name": "HTTP 400",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Venta con stock insuficiente",
+      "status": 409,
+      "assertions": [
+        {
+          "name": "HTTP 409",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Registrar venta H2 de una unidad",
+      "status": 201,
+      "assertions": [
+        {
+          "name": "HTTP 201",
+          "passed": true
+        },
+        {
+          "name": "Venta con creador",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "Venta confirmada en bitácora",
+      "status": 200,
+      "assertions": [
+        {
+          "name": "HTTP 200",
+          "passed": true
+        },
+        {
+          "name": "Correlación de venta",
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

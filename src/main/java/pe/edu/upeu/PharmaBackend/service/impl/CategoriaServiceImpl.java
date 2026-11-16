@@ -6,6 +6,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.context.ApplicationEventPublisher;
+import pe.edu.upeu.PharmaBackend.auditoria.EventoAuditoria;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.upeu.PharmaBackend.dto.CategoriaRequestDTO;
 import pe.edu.upeu.PharmaBackend.dto.CategoriaResponseDTO;
@@ -27,8 +29,10 @@ public class CategoriaServiceImpl implements CategoriaService {
     private final CategoriaRepository categoriaRepository;
     private final CategoriaMapper categoriaMapper;
     private final ProductoRepository productoRepository;
+    private final ApplicationEventPublisher eventos;
 
-    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper, ProductoRepository productoRepository) {
+    public CategoriaServiceImpl(CategoriaRepository categoriaRepository, CategoriaMapper categoriaMapper, ProductoRepository productoRepository, ApplicationEventPublisher eventos) {
+        this.eventos = eventos;
         this.categoriaRepository = categoriaRepository;
         this.categoriaMapper = categoriaMapper;
         this.productoRepository = productoRepository;
@@ -107,6 +111,7 @@ public class CategoriaServiceImpl implements CategoriaService {
             );
         }
         categoriaRepository.delete(categoria);
+        eventos.publishEvent(EventoAuditoria.de("CATEGORIA_ELIMINADA", "Categoria", id, "Categoría eliminada sin productos asociados"));
     }
 
 }

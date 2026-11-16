@@ -1,0 +1,10 @@
+{
+  "tests": 67,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 5,
+  "passed": 62,
+  "sum_suite_seconds": 36.855,
+  "environment": "H2, perfil test; Redis omitido",
+  "date": "2026-11-15"
+}
