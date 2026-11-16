@@ -7,19 +7,19 @@ Este índice reúne la implementación, los resultados y las evidencias de suste
 ## Repositorios
 - [Backend](https://github.com/ADavid2507/PharmaDB/tree/feature/integracion-estabilizacion-asmat)
 - [Frontend](https://github.com/ADavid2507/pharma-frontend/tree/feature/integracion-estabilizacion-asmat)
-- [Arquitectura](arquitectura.png)
+- [Arquitectura](s14/arquitectura.png)
 
 ## Documentación técnica
-- [Auditoría y eventos](auditoria.md)
-- [Incidencias corregidas](incidencias.md)
-- [Resultados de pruebas](resultados-pruebas.md)
-- [Defensa técnica de diez preguntas](defensa-tecnica.md)
+- [Auditoría y eventos](s14/auditoria.md)
+- [Incidencias corregidas](s14/incidencias.md)
+- [Resultados de pruebas](s14/resultados-pruebas.md)
+- [Defensa técnica de diez preguntas](s14/defensa-tecnica.md)
 - [Colección Postman](postman/PharmaBackend.postman_collection.json)
 - [Cómo ejecutar Postman](postman/README.md)
 
 ## Demostración y entrega
-- [Guion de diez minutos](guion-demostracion.md)
-- [Checklist y registros manuales](checklist-demo.md)
+- [Guion de diez minutos](s14/guion-demostracion.md)
+- [Checklist y registros manuales](s14/checklist-demo.md)
 - [Informe editable](entrega/Asmat_LP2_S14_Autonoma.docx)
 - [Informe PDF](entrega/Asmat_LP2_S14_Autonoma.pdf)
 - [Video de demostración](https://drive.google.com/file/d/1DPWz7nIwKpFEgb8LG0ADUTkNhpfdQB73/view?usp=sharing) — duración aproximada de ocho minutos, según el informe.

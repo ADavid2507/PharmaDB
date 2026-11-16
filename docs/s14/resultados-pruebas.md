@@ -2,7 +2,7 @@
 
 Fecha de revisión: 15 de noviembre de 2026, zona America/Bogota. Versión: backend base `15fef45`, frontend base `91e5038`, más los cambios de trabajo de la actividad autónoma **sin commit por instrucción del estudiante**. No se asigna un hash ficticio al trabajo nuevo. Después de hacer los commits, registrar aquí los hashes finales y repetir las pruebas si se cambia código.
 
-La huella de las fuentes verificadas es `184f10d93277f02e4bc942099c9edf2a4ace9829f061016a209ccd3f5de964be`. El manifiesto completo se conserva en [version-fuentes.json](evidencias/s14-estabilizacion/automatizadas/version-fuentes.json).
+La huella de las fuentes verificadas es `184f10d93277f02e4bc942099c9edf2a4ace9829f061016a209ccd3f5de964be`. El manifiesto completo se conserva en [version-fuentes.json](../evidencias/s14-estabilizacion/automatizadas/version-fuentes.json).
 
 ## Resultados actuales
 | Comprobación | Resultado | Duración registrada | Entorno |
@@ -29,11 +29,11 @@ Siete casos nuevos en frontend/e2e/estabilizacion.spec.ts:
 7. E2E-14: token alterado provoca cierre de sesión por 401 y aviso de expiración.
 
 ## Evidencias descargables
-- [Informe HTML Playwright](evidencias/s14-estabilizacion/automatizadas/playwright-report/index.html)
-- [JSON original Playwright](evidencias/s14-estabilizacion/automatizadas/playwright.json)
-- [Resumen backend sin secretos](evidencias/s14-estabilizacion/automatizadas/backend-resumen.json)
-- [Resumen Postman saneado](evidencias/s14-estabilizacion/automatizadas/postman-resumen.json)
-- [Colección reutilizable](postman/PharmaBackend.postman_collection.json)
+- [Informe HTML Playwright](../evidencias/s14-estabilizacion/automatizadas/playwright-report/index.html)
+- [JSON original Playwright](../evidencias/s14-estabilizacion/automatizadas/playwright.json)
+- [Resumen backend sin secretos](../evidencias/s14-estabilizacion/automatizadas/backend-resumen.json)
+- [Resumen Postman saneado](../evidencias/s14-estabilizacion/automatizadas/postman-resumen.json)
+- [Colección reutilizable](../postman/PharmaBackend.postman_collection.json)
 
 Los resultados Postman originales no se versionan: pueden incluir solicitudes de login y tokens. El resumen conserva nombres, estados y aserciones sin esas credenciales. Los reportes HTML deben abrirse localmente o mediante playwright show-report; GitHub no ejecuta el HTML al abrirlo como archivo de código.
 

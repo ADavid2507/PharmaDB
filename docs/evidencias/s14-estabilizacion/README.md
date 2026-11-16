@@ -1,5 +1,5 @@
 # Evidencias de S14 Estabilización
-- [Pruebas y limitaciones](../../resultados-pruebas.md)
+- [Pruebas y limitaciones](../../s14/resultados-pruebas.md)
 - [Informe Playwright actual](automatizadas/playwright-report/index.html)
 - [Resultado Playwright JSON](automatizadas/playwright.json)
 - [Resumen backend](automatizadas/backend-resumen.json)
