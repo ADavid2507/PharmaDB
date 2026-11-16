@@ -15,7 +15,7 @@ import static org.mockito.Mockito.*;
 
 class ClienteServiceTests {
     private final ClienteRepository repository = mock(ClienteRepository.class);
-    private final ClienteServiceImpl service = new ClienteServiceImpl(repository, new ClienteMapper());
+    private final ClienteServiceImpl service = new ClienteServiceImpl(repository, new ClienteMapper(), mock(org.springframework.context.ApplicationEventPublisher.class));
 
     @Test void returnsRequestedPageWithStableSorting() {
         Cliente cliente = new Cliente();

@@ -1,0 +1,1279 @@
+{
+  "date": "2026-11-15",
+  "backend_base": "15fef45",
+  "frontend_base": "91e5038",
+  "state": "Cambios sin commit por decisi\u00f3n del estudiante",
+  "fingerprint": "184f10d93277f02e4bc942099c9edf2a4ace9829f061016a209ccd3f5de964be",
+  "files": [
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/auditoria/AuditoriaListener.java",
+      "sha256": "764b1b496c170d9cd1ed30208e6e30b09d334c3c0e2c45d66e4303404ec9e6dc"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/auditoria/EventoAuditoria.java",
+      "sha256": "db19f72cc7f8e6ac449dda6d5870a1552cdb225196b7b9bbbfdc8c7bcfb53492"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/config/AuditoriaConfig.java",
+      "sha256": "4b4401ef37a4008cb9446f8d620c9754445c40828656e38effca8ac9cdee0024"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/config/CacheConfig.java",
+      "sha256": "8f583d73f36b480ec6d4dd6b7bfd8473c7585804b804e3a876530b244ecba8a2"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/config/CorsConfig.java",
+      "sha256": "b3e3533ac0792419439cf9098a449680a02870ee81e0f3b289510d555e34e4bf"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/config/OpenApiConfig.java",
+      "sha256": "3f18721e3e78557116c5a1a7d686192022c30fe28797fb6a33b55fa81d4bdee9"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/config/RequestIdFilter.java",
+      "sha256": "a98d839058488f959b542f2a13664a7a821bb74c87ac1f7230e257b20894be8c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/config/SecurityConfig.java",
+      "sha256": "396ff4507c87998bd7a6beb338a68b607671d73d9fb960755f451f3e1c96af1c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/AuditoriaController.java",
+      "sha256": "ce6b4d2b681e81bf23a249a4847e396cd67e5e5191934d713519366d06df119d"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/AuthController.java",
+      "sha256": "92a5ecee95bc69f08d1eca6565bff70070e14dfa010b0a2ca56a8a13ea6f54ca"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/CategoriaController.java",
+      "sha256": "defe68ec7879b071bb0faf9ede7cca08903965fecd2d20867efdc100ed5b78ad"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/ClienteController.java",
+      "sha256": "8582150cd9622448020f3c475503c86500899de0e6232ae4cb6e41108731574f"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/HealthController.java",
+      "sha256": "c9e1b32a973a26d49a9908a52fbc2766374a287d299fb93289c30a9dbf483b4e"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/ProductoController.java",
+      "sha256": "71e8515f91b397aa56208545856f6b285a5a9ee1ab370100c1dd1fd2bb32f1fd"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/ReporteController.java",
+      "sha256": "e9f354a30558b66ff33906520c6b48e84c3b9de15314a824e008c56f14638aaa"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/UsuarioController.java",
+      "sha256": "5bb3dce3c9b28e55ae7edcd83caf67e8c6f27eaca37d6d1ab97aa0b5db41b82b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/controller/VentaController.java",
+      "sha256": "7dfade1128f10826632db9debea80e00dbf86ce6a9c4165841fbc3a3b81f834a"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/AuditoriaEventoDTO.java",
+      "sha256": "c17f539073bde09a9c398769621860c61844c5610185a168743bd720f90114a0"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/AsignarRolesRequestDTO.java",
+      "sha256": "4ece4e87246eb0895bd6200fc8ed3bb916296a1e96d9126fdb019b3a19b4a5bf"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/CambiarEstadoUsuarioRequestDTO.java",
+      "sha256": "a7fe45b10aab75bfc75fd5f2f5d7a74625345c28cc069b41fbe7730e6890595b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/CambioPasswordRequestDTO.java",
+      "sha256": "a22c096e2f56d8390d7617bf39403f2019c838471f848b93b5d9d1f801e80581"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/EmpleadoResponseDTO.java",
+      "sha256": "6d729e32e556bdb3bc32f31adf29905674feb79fcc3aedc7543fdba1e56bda32"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/LoginRequestDTO.java",
+      "sha256": "ce47ff012ce6e4baa4fd9d1073d294ce30ec602caf8ece8f01ffc253cfd9712b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/LoginResponseDTO.java",
+      "sha256": "7a9ce2f2d32fcc4d93aef750f01dae10eb0b22ef2eec738bedc07a4ad0aaa338"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/RolResponseDTO.java",
+      "sha256": "eab305781eb7c263ed0fa6f2a368ec35d49cd79fd6966444d35a5e6c9341a69c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/UsuarioRequestDTO.java",
+      "sha256": "25131eaf086c77c61ff826a9722ebf6dc5e4367d230047743653e44760e0dfff"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/auth/UsuarioResponseDTO.java",
+      "sha256": "65f50456dcd798622610d9d9fd7aff1362517705e3c4b2b2c9a4eb65c34c6508"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/CategoriaRequestDTO.java",
+      "sha256": "b8b2779d72b7244e07fa8e0f216e82ed47b9a8d548b7a50052ccf5b68c63507a"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/CategoriaResponseDTO.java",
+      "sha256": "7ec16ed9f3b6402da6eeee8efcdd008e56c017ea2fbebbce72c8e0c67c14aca0"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/CategoriaResumenDTO.java",
+      "sha256": "418296b6fc5ed5cf43eefce73a6290135a8062ac948c80255c308a590402f059"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/ClienteRequestDTO.java",
+      "sha256": "d55f8a845d2e3866f95bf7e51c1a10be807fadcdd224eb71478b9b8b743ddcfd"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/ClienteResponseDTO.java",
+      "sha256": "67d3fb15485428754f42d80edece0e8fba3ebc168feab83fe64b31be8c3bfea3"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/DetalleVentaRequestDTO.java",
+      "sha256": "d3ecbb4ef642a27d5ad8ec67a94b15f194cea265ee9001fcab012caba3d04aa3"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/DetalleVentaResponseDTO.java",
+      "sha256": "b527d20af5f328632493638f5d58c88437d492525fb10262835c135873b3fc54"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/PaginaResponseDTO.java",
+      "sha256": "605e16801be5a542cfaadadca66f995a9f939dd724992bf41a3f14c1237a9e50"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/ProductoRequestDTO.java",
+      "sha256": "987c4a341d44aa2bf03c0863d67913e9f124de3be7d0378373f05bf1de64d9eb"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/ProductoResponseDTO.java",
+      "sha256": "208b6bb284be4163f15182d90f8eae6b7a1884b237d2a72302e72c7588c76dff"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/reporte/ProductoMasVendidoDTO.java",
+      "sha256": "677233e1f36d6bfcb2af59b6172e55650fa71bafbd55e9051dcc49f31da54b20"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/reporte/VentaPorCategoriaDTO.java",
+      "sha256": "5f8407e96f364fe2f83a5c60fd08e5e2d239387fa6d879e20d96fd827135fa5c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/VentaRequestDTO.java",
+      "sha256": "33dbaf9693948387f56b39e4bf660ea7508ed6abd066e7aa49271af31bfacc36"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/dto/VentaResponseDTO.java",
+      "sha256": "6e51a27297eb841a0f7d0632f444463581f6679236c23d7931a91a42e5aa1dfb"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/AuditoriaEvento.java",
+      "sha256": "b7fcd2f765f9306700a67fb1345e692bc535f7583187843ab5c93f1d50405e8c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Categoria.java",
+      "sha256": "6c9be216552214298b1b8f59ce172bbef651a4d73ea0a872c784ad09499723ce"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Cliente.java",
+      "sha256": "1599d7aec8b220c6c96730e5da7f28614ba40d7e6b7c6398fb45d2ff383357db"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/DetalleVenta.java",
+      "sha256": "40bc8b73532bbf81c0b7acdf9e5560712028219b6e266edc26e1dc628e67c0ea"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Empleado.java",
+      "sha256": "7f5896f7d634d94664f327025a1fe085632f86faf97f81dd0d37017ba728be1a"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Producto.java",
+      "sha256": "601efc0b856e7bd1f7ddbf0a2066bc83fcc629ac38f999ae2d529adda3d0e5e0"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Rol.java",
+      "sha256": "e1d4d2a87781906f81f5c8d1f60684af53d716d96fba5501fafef7dfaa18e555"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Usuario.java",
+      "sha256": "06aa2a95180a8219da178d7df19fd0e8e7694dc3a1efcdb70146ea94cbf1ff5e"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/entity/Venta.java",
+      "sha256": "b5b87ce4a4f06aa2a72066d404ed839015c314932fe60281934d63f1ed54bdcb"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/enums/EstadoVenta.java",
+      "sha256": "cd731c0855974b03e6c6148778ee09a0d1031a14d806da4b6ff59c0a4fb0b016"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/enums/Permiso.java",
+      "sha256": "324e52193bc488e63674a6f21107501e488cc23e6ef78c29eab4099a4b53b0b8"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/exception/dto/ErrorResponseDTO.java",
+      "sha256": "8d93a2e53c53eca7ae9a4a1afec5d773fdaf6808871372f4d9f3fa7043a56e1c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/exception/GlobalExceptionHandler.java",
+      "sha256": "d1012318f87db0e894d7daab6792088d9fb760279a46db3be8c21055e8fa8787"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/exception/RecursosNoEncontradosException.java",
+      "sha256": "433bd99922cb2d397f697a8cc7f0191d28fb3ba2d7b3b3049eee2c2f01a7108b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/exception/ReglaNegocioException.java",
+      "sha256": "e63f14108514464126a1137d282b64fc61b99289a2c7c0422d75b5ac85b00ba4"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/mapper/CategoriaMapper.java",
+      "sha256": "7f54cd1d5efefadd6e9e8565e91bdedd30236636b0d6b7ed8b4ce5d9b4cb2078"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/mapper/ClienteMapper.java",
+      "sha256": "c9d7da71b54bc86d62a0fb1feeb381a888b56a94edf2ca4f159fac03abe47bc4"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/mapper/ProductoMapper.java",
+      "sha256": "219872323db0834f7bc3f1f33b57ee48778a10c1dd7e2d3c44b8d0e92f42d5d0"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/mapper/UsuarioMapper.java",
+      "sha256": "00603ab6ca185e5c1cf3a7c05a5522b0a9e9542ab023d2dc97942463f719a592"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/mapper/VentaMapper.java",
+      "sha256": "8dcc0488a662e7fce833532f53e987015c3297d89708ec53cb5dea5c548a9e63"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/PharmaBackendApplication.java",
+      "sha256": "71cccb10c7f38060861ff829d7810340730294c965c004e059c2c8a71d541abc"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/AuditoriaEventoRepository.java",
+      "sha256": "53856c963febc51e5f1a375df9c3ff2435a915f52c5291a6b8064dea66e04397"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/CategoriaRepository.java",
+      "sha256": "75ec7807e113c05d519d32ebc9bafbc4dd90ff377b15ca43dd22143822a97e96"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/ClienteRepository.java",
+      "sha256": "d4ae11664c56baf38c8420fb45fa3147ac15215f2197a1f83dde6ab2c2a7a76f"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/DetalleVentaRepositoy.java",
+      "sha256": "3f680635b459f99286d453c6c60dc35046a6a70cb2d98c09ef711a15d001dcb7"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/EmpleadoRepository.java",
+      "sha256": "54a392f24a459aa82e540cc4e55c28e794427c550d648d48fcc0df4d072440ea"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/ProductoRepository.java",
+      "sha256": "17003d060fac8e37062d87b5e6b52cd87b8da752aa440dc657f3b95ce3534f5b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/RolRepository.java",
+      "sha256": "46778aee7227bf12fa849d4a2987b437fae69a61d90f55c6d85ea21821b3f8f2"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/UsuarioRepository.java",
+      "sha256": "7117ee3789f54e68bd9dd0679414d587e5c88b268590f8b07e88e2cdf2f6ab3b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/repository/VentaRepository.java",
+      "sha256": "611ec895ed38203379918efa8aa6378174a5faeba6af0de65ea0194ebde9c2f5"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/JwtAuthenticationFilter.java",
+      "sha256": "b7ac52f4ca8fb5b0d53eba4780656f45847056753a19665583da87d4055e3c85"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/JwtService.java",
+      "sha256": "d2d2e2bb7e61f02d6fa85b367e8ab79e6d31a813f1f384fca87a8a4dd757ff4a"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/PermisosPorRol.java",
+      "sha256": "51e304467e568d737fa40b5b0ae1c88d3b86dc7abeb2b12442fdaabe21ef5c2a"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/RespuestaErrorSeguridad.java",
+      "sha256": "d0e7c480d077359f512191493697cf7a80e74e6d0e270eb257d706d1404f7716"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/RestAccessDeniedHandler.java",
+      "sha256": "1c026a3db7428f28b12944b7566aa4ded8df526d777226e4c375601dd4082f04"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/RestAuthenticationEntryPoint.java",
+      "sha256": "82fa0941c3c05c47b5dbb6439878278efe505a5f1327d1af2fb15b9862be573b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/security/UsuarioDetailsService.java",
+      "sha256": "cf687ae471d130f01d714bfb77274f0888e0f2a8322c5196d5ff1d945e7b8b14"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/generic/CrudService.java",
+      "sha256": "dc3126be8404b6c0e2cc5681a70ce6b33233698385c239771440579a1320b82d"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/AuditoriaServiceImpl.java",
+      "sha256": "bc7845661c7447eab826f665f650a20d5a5a61e705c7d14f9486e43e87ad7347"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/AuthServiceImpl.java",
+      "sha256": "335689505563249d428b7c7343b0497cbdaa4053eb2de83bc22fa84d04a80d93"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/CategoriaServiceImpl.java",
+      "sha256": "a3145f023045d6d121b71915b666799c5e25954a6deb0e7e405534dce166f728"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/ClienteServiceImpl.java",
+      "sha256": "ef1b7f5d57a046567c6bc1e930138acf5d2c211c5221f3cd64e270159edbf537"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/ProductoServiceImpl.java",
+      "sha256": "ef0c528cc5341a5e5a0cc2a015b0ba11b7277815b810c73aba9143d060725c3d"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/ReporteServiceImpl.java",
+      "sha256": "675add652dfb33a855e55b90179ca7e930ea65829a1227b10907d618f4ac186d"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/UsuarioServiceImpl.java",
+      "sha256": "2559d31d58cc92577edf0d2094baf61dfbdc3ea9f28e34af45d469d4cfe1750e"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/impl/VentaServiceImpl.java",
+      "sha256": "a58a2a6213718629b325b906edb6470cd4055859c17b4aab01279f3aa3472c52"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/AuditoriaService.java",
+      "sha256": "740faab4b666a41430a12fbdad0de26591576a11afb114fda7d50980cca438c0"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/AuthService.java",
+      "sha256": "ea7c591073ba2992fa82795c574726d4f64b944432c033c3a9ef2438d4b992aa"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/CategoriaService.java",
+      "sha256": "053b2d206c88230e9eead17a40c43a73c903e84732b6e5b89bdcdf49acd99113"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/ClienteService.java",
+      "sha256": "1e9a7be263b8a074803dbbda2e8fde00059fb413118fc8d81072221d20c0129f"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/ProductoService.java",
+      "sha256": "a6d22f1b2b1527cf0c05e25dedd4e8eca3f81b0c393ef217eb3f4e93f9574a37"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/ReporteService.java",
+      "sha256": "20ef3d83f7ceb1d711d7fa6de4693637e8c84cffbd7717c14941f87e0bd3bff3"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/UsuarioService.java",
+      "sha256": "a9e827b2482fbc45bbc00e852ef0e1a52330f2be384a249d909acb8462ab048b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/service/service/VentaService.java",
+      "sha256": "6a6179fdb83c7f76b0adbc9ce981ce21748ecf33a077921efae74ae1a842ad59"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/java/pe/edu/upeu/PharmaBackend/util/PaginacionUtil.java",
+      "sha256": "a27e451aadc0ba5fa8fe5381fff35e0fbc3cb1e239b40ddc49e10fbd18f471d2"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/resources/application-dev.yaml",
+      "sha256": "fe830e8fca9542a90f7274118a47da20446a6bc164d94a6bce6be46e6b36e5e2"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/resources/application-prod.yaml",
+      "sha256": "267569b0338903f9e62aa7a1f3fb1aa7f8462a28530df49a1c249e27bec6335e"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/resources/application.yaml",
+      "sha256": "35749e8a8fbaf4bb20abd58550763564a61ebfd2317811a66404684ede3b731e"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/resources/db/migration/V2__seguridad.sql",
+      "sha256": "81765a90e7f7cdacc309079d01becb1dc86ec34ab7509c81b3201a4d30bc3b45"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/main/resources/db/migration/V4__auditoria.sql",
+      "sha256": "6da1610fbb16dbff46caa28ea28b9756f3a722a52af327188a5b4577cfe41ca9"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/AuditoriaIntegracionTests.java",
+      "sha256": "438882a6a0b03a85f7eaf36af20ca32e5c16235364fff08c41bce7d56e4450ea"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/CacheNoDisponibleTests.java",
+      "sha256": "3b20514b62fd94f59c445e5fb07e9feda630f4c4e8dc1617e412b0237ec176d4"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/ClienteServiceTests.java",
+      "sha256": "8841590460e95ae340bc0b1b88424bbdc1732f9491ecebe5c66fd160d0894725"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/ConsultaWebTests.java",
+      "sha256": "f9c7dc69ca26d5b0f32c37363324e5201b156d7de3e858378f4f0fbf96543110"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/E2EDatos.java",
+      "sha256": "617abe77f4671b921a766017f6e3d5db725732f3498166d0fb94eefe09c0ae8a"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/OptimizacionRedisTests.java",
+      "sha256": "05aa1c2dc9299b9c97fc8abcba8ef8e6ac1a6d2d51c8a2002a4ef22085dfdff7"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/PharmaBackendApplicationTests.java",
+      "sha256": "9e6ca59111c732f9203c0bf37279e14949d331d886eaea5113c133b80a832aa1"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/RequestIdErrorTests.java",
+      "sha256": "37c972bc1fd3fe57aced05116773a6f7ecf279d85d95f5dabe7a7d7ee5685b1b"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/security/JwtServiceTest.java",
+      "sha256": "a5d075a22bc9cbe0b1656edfb526747c867aebbf76b2efae97c73575f0b2359c"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/security/PermisosPorRolTest.java",
+      "sha256": "dd8414800f9da0a61acec31a90295ccc5482a535fdb940d201e1bbd199fe033e"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/SeguridadAutonomaTests.java",
+      "sha256": "e805a585f4ae97c083627968aa3ff785eb05c7f3350d99dc28691f4a70c90460"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/VentaServiceTests.java",
+      "sha256": "0ff658e123893f967ebe36928d9b6bf390d0b9798f31b3e8298f162ff3c37a90"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/java/pe/edu/upeu/PharmaBackend/VentaTransaccionTests.java",
+      "sha256": "fb87dc1c949dc773873d6bc7988d91724319cb7c371f36211cb5d91e01e91100"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/resources/application-e2e.yaml",
+      "sha256": "b80870133e1dfa7f6a3d9ed1fb1943241f742f81ae86c86e192a2faefb3491c6"
+    },
+    {
+      "repo": "PharmaBackend",
+      "file": "src/test/resources/application-test.yaml",
+      "sha256": "497803cdd45687d2d6cf444e6e920bb009ec6ba45c1e844025871cdd20044c0b"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/app.config.ts",
+      "sha256": "2671ff93eb817bc45d5cfb54d642d9af64b07e803f47de7ef002ec8d779399f0"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/app.routes.ts",
+      "sha256": "ca7f482fb223fc5db056e1548793b272a7488552b26c97fdb67a9df42c9cdb8f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/app.spec.ts",
+      "sha256": "bc9aaba5c17a4a1ee76093f005c86c340a30f9d30c641e78414db0ee6ff56abc"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/app.ts",
+      "sha256": "497d82af9cc2f4595ed03a63d4e860ee8ea022932ae7ce58d71238d54b038082"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/auth/auth-service.spec.ts",
+      "sha256": "65583d78ee589feebfbeb201d619992284f88843ba8b55dea15aec9b268c9009"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/auth/auth-service.ts",
+      "sha256": "caa14741d0ade4b9441d40ae00870903f4e3bd5357610309ae32349cc3559e9c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/auth/auth.model.ts",
+      "sha256": "2f68ad51281dd0e3dd493d7e7b28ad8717a84b5f88d33ab5d917fb45355ecb9e"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/auth/aviso-sesion.spec.ts",
+      "sha256": "80c0c964bebf38cba5ffa0ad68ea22da4f74106c8d1852b3447db9fd8b64c8d4"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/auth/seguridad.spec.ts",
+      "sha256": "0990fa7240f344d841b539908997e753cd7da53cf94c4a4eb4799983c53aae9e"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/config/menu.ts",
+      "sha256": "2579d11d1daf54cd0bd2294dcc803e416bb53d1a37da811b2e2ad6b3de37f977"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/guards/auth-guard.spec.ts",
+      "sha256": "f5332ec85f7471a054b8d5822c73c7024b0046d211d1ac98c08be7ac7c75ca69"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/guards/auth-guard.ts",
+      "sha256": "d985aebd530d1c52de4872ad25dee96d5240f25620bfa81db61e2264eba2f698"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/guards/permiso-guard.spec.ts",
+      "sha256": "9c2fde4cd303217c1246ea527f8dc783d268b63c285b12bc8c88478dc6e8a2f1"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/guards/permiso-guard.ts",
+      "sha256": "a290de6c12ac5f891565df4bd9b80e2dc8c8ac30fc6e7c7e425911b5b036449a"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/interceptors/auth-interceptor.spec.ts",
+      "sha256": "2356140c720128aeee8d6f0d0e3c852e660f4ffdaccf25d6a1a67d0e2b65eea0"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/interceptors/auth-interceptor.ts",
+      "sha256": "6c7a309cad7a7ef5c3b3f23217853b2f2d04e99693a932ff454e906d0450fb45"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/interceptors/error-interceptor.spec.ts",
+      "sha256": "acea3f8aeed7557c45fbe5a9408cb953d57705e7ba81d65cfaf67e436469f172"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/interceptors/error-interceptor.ts",
+      "sha256": "eecfb7bc3565b12b952ce45ad6c97a2b0f5600d695bb402c7c639d542df76ae3"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/models/consulta-pagina.ts",
+      "sha256": "886422ac888371f81e04df94a2ee5adf3b23b5dc55fc542f207fbe54084c1784"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/models/error-response.ts",
+      "sha256": "4ab11ff58ddd70d20229d89008e425d04f0e5242f2d419ef2d5a308ff1e60b86"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/models/pagina-response.ts",
+      "sha256": "b7e07a42a501f0940375a5f760cf62bf800bc4f80ec77ed976852cc228202209"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/utils/cargar-paginas.ts",
+      "sha256": "53dbb5eb83e6b23b7f3503aaea5f0230ef20c50764ae925e690ed2950a65ddef"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/utils/http-error.spec.ts",
+      "sha256": "5ae1a8581b297095627bbcba2b5449082492ee6bc4fa73bd3016bfb68a778d0e"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/utils/http-error.ts",
+      "sha256": "8a7b30540ef993a59a957d0707348e8bdbc060d59658245d54800267f530052f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/utils/numeros.ts",
+      "sha256": "0ac62a08087728fee1334ca0ec0675bee86a94f05ad5a020c0c82a7bd4f5ec5f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/core/utils/texto.ts",
+      "sha256": "bb9adb918d890cffdf161b9664c063efc200c73aa90074f80f3c215c61bd342b"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auditoria/auditoria-service.ts",
+      "sha256": "6f3286ced967c23d8d91472fabf9c0aa326a3ef29a466a6342f3cb53fd4102ad"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auditoria/pages/auditoria-list.css",
+      "sha256": "2e41eb4023cb9c78ea2b8215df04f849f876b01a5538c2789200645330473705"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auditoria/pages/auditoria-list.html",
+      "sha256": "6231bcc7687a964a00a03fbc8342c67d4707a946d3beb4fbc02a271d73ef09be"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auditoria/pages/auditoria-list.ts",
+      "sha256": "9cc2e776fc32f1ccbe0209b142059f0f991f76512c8f7970a66096b74368859e"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/login/login.css",
+      "sha256": "d21b87a8e48b3fb4d98309e47f84561a36627e5702c78d8329ef1a2efc4a0fc9"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/login/login.html",
+      "sha256": "d2a5b71558ff560f0ce983712a063ee8a527a63e223d2207e3b8f8bacd37eb84"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/login/login.spec.ts",
+      "sha256": "11e38da8bfe8050b6f392feeaedee8a6cf8ca2c08e2f9cf485017e9f01cd1659"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/login/login.ts",
+      "sha256": "3849b118cc0aabfb9c952876ef9986dcd43f743575467cf20a3df68581ceb980"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/mi-cuenta.css",
+      "sha256": "4597ac9501c68688bb2802dbbd8a7b94e811190771e1460568ad6e6e437a515b"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/mi-cuenta.html",
+      "sha256": "1e905437640643c41479625fdbdd133cbc2d3586f50122b11883edf535d11bf6"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/mi-cuenta.spec.ts",
+      "sha256": "af1c8a18e23f47e261e97ac06a964357b3b2259073f1c65ee12622f5b8cc5b3d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/auth/pages/mi-cuenta.ts",
+      "sha256": "02e52d49bb9e1bcfc656fc7ff0b7610fcdf7b9f51babefb149b604f183335819"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/categorias.routes.ts",
+      "sha256": "4bf2c9e6735a7655990a5c66be2444915707c1362ec3ea1eade08ffaad7db2fc"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/models/categoria.model.ts",
+      "sha256": "81fd51aafe8be114839e19ed51ab664789c275c19f2ad1039db7abee5a2a509d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-form/categoria-form.css",
+      "sha256": "b2b5e33fc97a75585360accc54d7670f7cdf7a2f12afb0613e58d1850a46de9d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-form/categoria-form.html",
+      "sha256": "90fd1c8fa735faf794468f38228aeba2d5b28f06fa219652204c06040fbe3988"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-form/categoria-form.spec.ts",
+      "sha256": "366be95d8c5fd406e9bcc1471356f729347748364f93ce12a1167be8ef940bac"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-form/categoria-form.ts",
+      "sha256": "0670b828ee1c2f5cbffcda4eeec9c3e78ecab8465832875038d2949224f3b090"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-list/categoria-list.css",
+      "sha256": "d0517077a70394c78230fe841210fe14b16a2e961e086d3979a7664aaa933207"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-list/categoria-list.html",
+      "sha256": "f99d62103d082ea30832cf4f7628dff09235e08f789d30647b39d1b05d96d295"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-list/categoria-list.spec.ts",
+      "sha256": "f59c667ccf547d88113910144911d7f3dc14e9e2264f38934d245aa5d47376d2"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/pages/categoria-list/categoria-list.ts",
+      "sha256": "4959c04d265bcaf087f7790d78b870d29505f6afb332e4509d9b090fe607dc3f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/services/categoria-service.spec.ts",
+      "sha256": "de6c1019740129dc3be4a91f420955972fe2b4b0d95ede0950e75cdf9dfa218f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/categorias/services/categoria-service.ts",
+      "sha256": "b8bcd08aef5346151f177e855257d4bf527546a25bc21e67bd8bcc33d6ef1536"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/clientes.routes.ts",
+      "sha256": "82c5e1aea1e3c55b3bb12556977d7026df9c757ecda845bd8219c0878ab49406"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/models/cliente.model.ts",
+      "sha256": "aea337295c11d945d4d2aac9d122cbf7f23b7a3b60ea0709629510c472e03813"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-form/cliente-form.css",
+      "sha256": "b2b5e33fc97a75585360accc54d7670f7cdf7a2f12afb0613e58d1850a46de9d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-form/cliente-form.html",
+      "sha256": "112931d67a42fddbac02005e698cf7fa237509cfe52f4c753c7378efd95588c3"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-form/cliente-form.spec.ts",
+      "sha256": "62a615a47d43a7ea73d9479f229202a140a6b666671c654e469b6bdde5bf7fe4"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-form/cliente-form.ts",
+      "sha256": "6fb4223faa955f2d3f9d54d8e7d81361ca9158b305bae8792ae636448b87802d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-list/cliente-list.css",
+      "sha256": "1863be8cbd087cfff0cc321a7254f2862fa1b58bd1e9834dfc8a92e0dfdd68a6"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-list/cliente-list.html",
+      "sha256": "1630eaadf1c31578b0c1c1d5403f961c2ba5fdb3734bbb49efd52a48d81e92b9"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-list/cliente-list.spec.ts",
+      "sha256": "b1a7bf81b194414f3c442f1a3317281ea09bb84fbd1ecb2794752365f07611b7"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/pages/cliente-list/cliente-list.ts",
+      "sha256": "be336848bf3f7daa45c971d98c239b27d9bf73b900dd4f4cb9b0ed23bd9d1eb5"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/services/cliente-service.spec.ts",
+      "sha256": "8bf1343011bc5b468649bc7dfa20e92a1a3c995a29e98c46b7598875a2b0b684"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/clientes/services/cliente-service.ts",
+      "sha256": "cc13a2f5a062f4153a680aabbc3723e319c90e28a35ca839596cf9dcc01b2655"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/inicio/inicio.html",
+      "sha256": "7018a5cd8449a2d6121854623fc3bfb8e173a55d4390c4e90b9cae70532cc5e2"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/inicio/inicio.spec.ts",
+      "sha256": "ca6268e84637fa83c511a8909e0e9fb2fa41f2a1fc3e98483c7c063707a2c85c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/inicio/inicio.ts",
+      "sha256": "d1205777359e468359c71fb3ad64360d9c5bb50c5a430a8c6226476736841fc1"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/inicio/mas-vendidos.html",
+      "sha256": "a27f53ffe45083e0230e6862d8b78e1ed34442f0c88cfa7af909ab242a1319a4"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/inicio/mas-vendidos.spec.ts",
+      "sha256": "eb45dd3611b072578e99f85991c97df23d8c339258ad5137382b79365b104110"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/inicio/mas-vendidos.ts",
+      "sha256": "cb24a2d067cab9cbb620b9ea7b772596ae10d74f93a620ec478251d7dd7c62ac"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/models/producto.model.ts",
+      "sha256": "4bb356985e1342a638606c34a2842a0ce26ee7655a557e2774d210c362831931"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-form/producto-form.css",
+      "sha256": "ac59b8886edb590fa18de04412fa172cb083e7b0f7c9fa1a9da2755b1592f713"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-form/producto-form.html",
+      "sha256": "59d98b0d164deb17d8cd59bbc930e1ca15a640cd78ecb77e1dc6bf01e98b99cb"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-form/producto-form.spec.ts",
+      "sha256": "79efdf79413cb722f278b09d0654995d371115c5db9ffe91dfb22a69bc064d30"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-form/producto-form.ts",
+      "sha256": "8cab671102720f73e91b10f0f405c2fdee7e46fac9d928fd5aa1bef8456b96d8"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-list/producto-list.css",
+      "sha256": "c074d62b2746c3bb9e716b091487332704d87b96471bf1a0bbe2fb19e54d54fc"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-list/producto-list.html",
+      "sha256": "1f78484e846c7c2a8bc7d69e8b0a202e1a354cdb3a43a213ab89717f509560a7"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-list/producto-list.spec.ts",
+      "sha256": "ca5b932aafc96b2d611d6e8e5948875683935abc594adeba6d563b9f6a93d96c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/pages/producto-list/producto-list.ts",
+      "sha256": "1653756bea15fda6d4161dd3a7584da7003336815dc6a1b43514979a2a87286c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/productos.routes.ts",
+      "sha256": "7b2bab1e489ed5e14abaedd61e552f2372e9b83ae069a24bd49e8cdaf522e748"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/services/producto-service.spec.ts",
+      "sha256": "3cf9b05dc0b6ceb1b9c835ce8f0aa66e2d159db473008597b2d414ee18b4efa2"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/productos/services/producto-service.ts",
+      "sha256": "e00646e9d18b7694f122410411369048f4f624d4c96448a2032e2b44cc0054dd"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/models/reporte.model.ts",
+      "sha256": "80d62c260306cdcba031a28f2e544b78a5830f57033ebc3146d7c2760cde35e7"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/pages/ventas-categoria/ventas-categoria.css",
+      "sha256": "c39ca0eb4bff3a2409c899a1768cdbf07f6da6d1864dc7e5cb06b5779470ed00"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/pages/ventas-categoria/ventas-categoria.html",
+      "sha256": "c7e616f58a839a63e62172bfaa1296d32015f8639034a6d8dfb4576bb2e86921"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/pages/ventas-categoria/ventas-categoria.spec.ts",
+      "sha256": "2f63be16760f6f10ee547e3abdc2a50787fa2056a3a545dad640ea376de82ee3"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/pages/ventas-categoria/ventas-categoria.ts",
+      "sha256": "15ea5e7a35cbad1d2ba516e56c4abb2f0df550654340b9a2f6b8e852e7f46727"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/reportes.routes.ts",
+      "sha256": "dee672599358248e7d6fcbb438aa342a563f3512e1d91a51c175617b733380bd"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/reportes/services/reporte-service.ts",
+      "sha256": "1dc79fa34bccae41276bc5c4f39d4a1a1ca2a4010ef2c351b717fcf6fb1f5b63"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/models/venta.model.ts",
+      "sha256": "5a74ddc6ab88fe39c88bc60a49dd29d31ea5e7a9844cc36404c7c90ebc243500"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-detalle/venta-detalle.html",
+      "sha256": "b1604d9478685ecf843ebd29bb84a5c34fd74411f9a817b9ea54fdd0ee379667"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-detalle/venta-detalle.spec.ts",
+      "sha256": "00bcec39d6f9954c709f0ab3f049887cf1c15fd9418cafc7c4bf028c4c648339"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-detalle/venta-detalle.ts",
+      "sha256": "733344494255f54c2960bc2e2886985d91010e551183f1c6e3bf05ddde465a8c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-form/venta-form.html",
+      "sha256": "11583dfe655f8aca713efadc8b896ea428ae49af2278a1916dcacc7dc3cad41f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-form/venta-form.spec.ts",
+      "sha256": "20be82f4999b7aeb00559cf2d9d8966e37964a3e0281db05d4324cabc3d2d3b9"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-form/venta-form.ts",
+      "sha256": "fc433f55b53c44c5f2cc96dfae2155975d2a14f3f0f5369cdb34e1f551efd0fa"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-list/venta-list.html",
+      "sha256": "22233cf0f95c50bbad04873d910819ba37420a71a9183408e0c47b8da84ae9ae"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-list/venta-list.spec.ts",
+      "sha256": "db557fdeb37e2c4fee73bb63ab2ec8c89c9a43ee60d1eaacc92ff7cbd6ab8a33"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/venta-list/venta-list.ts",
+      "sha256": "7eb8404c3e46d8e67b310e3716e99be294711dcf91af8f14e17ae567663af26b"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/pages/ventas.css",
+      "sha256": "822907923b9c2b48537749347c021f5bbb238f57268248326f983983fd6f4786"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/services/venta-service.spec.ts",
+      "sha256": "0617643e0008107ea73ef7ff231e658257e828be4ae4608a2e1ef901106b9ce0"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/services/venta-service.ts",
+      "sha256": "c8fec069ae5c37364fc6439ee6c3e402e0c8ed249922c744e4fcba770b8294a6"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/features/ventas/ventas.routes.ts",
+      "sha256": "7287f3403a6bc314c3c84b333671da466254630c14186ea9b892e3b0ebd4d02a"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/header/header.css",
+      "sha256": "ad4730b73eba62ecbd14484997675705c3ce78fee036a0a93c38810d99439efd"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/header/header.html",
+      "sha256": "186e87060d6eab4fa7d241c5bc994645e11d4616d1a0d7d062ded2ab1b87811d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/header/header.spec.ts",
+      "sha256": "80589d0d5db5b317287de0500fa6fdc618ec4b443c0b8b828447b14f29f56101"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/header/header.ts",
+      "sha256": "0f6c72603ade8b3ebc3901ab0f40357bd3df587341565a9725ba3919cf6750b3"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/main-layout/main-layout.css",
+      "sha256": "67852eb83819214c099f27f149bef506abf68532ebe86a58c154c52552869dd5"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/main-layout/main-layout.html",
+      "sha256": "4ffbaaa71f339c943464f52d71d13d0342898646846fa798a4e017334e49342f"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/main-layout/main-layout.spec.ts",
+      "sha256": "f9c0b0bea99a9863e4aba3d21c3a6fa5b289bd0b58cce9cf84669b0d65f69336"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/main-layout/main-layout.ts",
+      "sha256": "5c0e222053b2a161640ec12d2900b500cb95b2974194ce2f3ab959f89197913e"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/sidebar/sidebar.css",
+      "sha256": "0aac2195955fffbb39d3418e230f7d285cf3f301691a831d41ae76389952bf6e"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/sidebar/sidebar.html",
+      "sha256": "1935fb6c45a1306d17c7898d29a5b9c7b9498a9a47d68b863d099bebf6e73681"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/sidebar/sidebar.spec.ts",
+      "sha256": "d82dbe23127e8086079ba3b97be91cd7432ea296deeefb0d114a2a2d2e840b46"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/layout/sidebar/sidebar.ts",
+      "sha256": "8646c6d2950baf64504f1ec0ef61822286c4bdf51666d353b9707f919d013f4c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/aviso-sesion/aviso-sesion.css",
+      "sha256": "b8514ededbe35139d797193cb5797e6645d2ab09ed2e04a8f744b554bca001bb"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/aviso-sesion/aviso-sesion.html",
+      "sha256": "f76a20235d361e670119365f5e84fe4e37451913d8cd2fe502a334c0c4a215c0"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/aviso-sesion/aviso-sesion.spec.ts",
+      "sha256": "d7170e3d7fa49613a6169da39e267a813d627302c00be4d8e935e8502d9ce300"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/aviso-sesion/aviso-sesion.ts",
+      "sha256": "a057eaf58692f6e8528b11d59cdb3236397a918f0daeaff8beac77fc863a5fd9"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/confirmacion/confirmacion-service.ts",
+      "sha256": "09fd366bbfd07222bc7c929a3d4228708ab6491427db46e39aa6a4e4b19ee5c6"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/confirmacion/confirmacion.css",
+      "sha256": "fc3be6e41edfec054e605ef95d4fee60a99885153c0badcbec682106774b9026"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/confirmacion/confirmacion.html",
+      "sha256": "4bde049e1cc275521b0a29c8c8a9da827338c234dabf25fd45f245522f1d5d21"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/confirmacion/confirmacion.spec.ts",
+      "sha256": "43e5561efba25e394a34749010c53b1f53faee1d7cf25ad20d66abafcdddb7b3"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/confirmacion/confirmacion.ts",
+      "sha256": "25e7e612b09a0c33315a0fc02390dafdcee0614b0fe9854adf37dbc5e7fe038d"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/paginador/paginador.css",
+      "sha256": "190764c2606b0894f6cc658059b2b9ecdcda744be47094e29645bee33ff9d725"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/paginador/paginador.html",
+      "sha256": "2f4829e8e3473e66b2f50411409e33ee043e3c143d8dfc5e063667d639769bfa"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/components/paginador/paginador.ts",
+      "sha256": "286968b2f8d1f894331ea6e19eb405a13eb4a78837eef13995f4807fbba90fd0"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/directives/si-permiso.spec.ts",
+      "sha256": "14729b62240eac30459dc965e9eae066b4f1c66c2334701b408fd1a5a9ad343a"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/directives/si-permiso.ts",
+      "sha256": "3833f59f5f4e099d5063d34ea163a9cf5b9dd54d36ac1fae20790262c472bd1c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/pages/acceso-denegado/acceso-denegado.spec.ts",
+      "sha256": "400e48d1390cbe7c37dc46ce97ff982197a72da1e00a10c02a06d051dc18e2db"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/pages/acceso-denegado/acceso-denegado.ts",
+      "sha256": "0370ece453cfdcbb78827ea6e2e584cc709983298cd32e5184cd0071c88698ce"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/pages/no-encontrado/no-encontrado.spec.ts",
+      "sha256": "f9959e549d9a230d4f045cd916780577e095f2482c3c43ab2493193f3b1b2e3c"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "src/app/shared/pages/no-encontrado/no-encontrado.ts",
+      "sha256": "13d4170393f372bed8ab3200681e85f6ab5d600d5560ff774824a1714c3cabdd"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/apoyo.ts",
+      "sha256": "847a3cbdefcd6e980eef89065ac40a3b8ac6b00b531165944d8e528041279eb4"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/autenticacion.spec.ts",
+      "sha256": "87e987e21abd14979ccbcde03918eed58cdf5f2eefcd384af4898fe137c847cf"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/estabilizacion.spec.ts",
+      "sha256": "5eef58e785609c5641fba222b0a8c24e15fda99c065fe39979c4fb6afaa8c4ac"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/flujo-venta.spec.ts",
+      "sha256": "fe5d474ffb8367cc1e4245663b39f56e22e1d4260ec42a47c35df6821019df66"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/paginacion.spec.ts",
+      "sha256": "15df879da277212980804f1ebdae9240e147f6cbf0aadd9295f7226d4614b5c1"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/permisos.spec.ts",
+      "sha256": "65a4b21f009e5dafc3c468a4215eb11c8c43afe506e897393f7cf454f8194ac3"
+    },
+    {
+      "repo": "pharma-frontend",
+      "file": "e2e/tsconfig.json",
+      "sha256": "a1c3c7fce47d3cd0f37716dcc8a8c0a960ee82e56dc88e56a3a93d18a11283e2"
+    }
+  ]
+}
