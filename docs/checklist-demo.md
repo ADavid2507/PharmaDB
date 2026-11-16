@@ -38,5 +38,5 @@ Preparar nuevamente la base de pruebas antes de cada recorrido; usar una copia o
 - [ ] Sustituir PENDIENTE de video en docs/README.md y en el Word.
 - [ ] Completar registros y capturas; actualizar versión exacta en resultados-pruebas.md después de los commits.
 - [ ] Exportar Word como PDF final Asmat_LP2_S14_Autonoma.pdf.
-- [ ] Verificar tres días distintos de commits por repositorio con git log; no alterar fechas para cumplir el requisito.
+- [ ] Verificar los commits de ambos repositorios con git log. Según la aclaración del profesor comunicada por el estudiante, pueden realizarse en un día.
 - [ ] Crear y publicar v1.0-demo en ambos repositorios cuando la versión final esté lista.
